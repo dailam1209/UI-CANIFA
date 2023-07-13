@@ -1,0 +1,23 @@
+
+
+.wrapper-search-product {
+    .sidebar {
+        display: none;
+    }
+
+    .products-search {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        width: 100%;
+        padding: 0 14px;
+        margin-bottom: auto;
+        height: max-content;
+    
+    
+        .product {
+            width: calc(100% /4);
+            margin-bottom: 30px;
+        }
+    }
+}

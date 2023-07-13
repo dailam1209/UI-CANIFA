@@ -1,0 +1,165 @@
+@import './variable';
+
+.male-distance {
+    .sliders {
+        display: none;
+    }
+
+    .sidebar {
+        margin-top: 80px;
+    }
+
+    .male {
+        padding:  0 40px;
+
+        .wapper-male {
+            --height: 40px;
+            --padding-bottom: 16px;
+            display: flex;
+            height: 100%;
+            padding: 0px 0 20px;
+            
+            .sidebar-left {
+                width: 15%;
+                padding: 0 5px;
+                padding-top: calc(var(--height) + var(--padding-bottom) - 10px);
+            }
+            
+            .content {
+                padding: 0 4px;
+                display: block;
+                flex-wrap: wrap;
+                width: 85%;
+                
+    
+                .filters {
+                    display: flex;
+                    justify-content: flex-end;
+                    height: calc(var(--height) + var(--padding-bottom));
+                    padding-bottom: var(--padding-bottom);
+                    cursor: pointer;
+    
+                    .filter {
+                        display: flex;
+                        width: 108px;
+                        height: var(--height);
+                        line-height: var(--height);
+                        align-items: center;
+                        font-size: $front-size;
+                        padding: 0 16px;
+                        background-color: $color-text-old-price;
+    
+                        img {
+                            display: flex;
+                            width: auto;
+                            line-height: var(--height);
+                            margin-left: 7px;
+                        }
+                    }
+    
+                    .filter-sort {
+                        margin-left: 16px;
+                        width: 118px;
+                        color: $color-page-active;
+                    }
+    
+                    .close-options {
+                        width: 100%;
+                        display: block;
+                        margin: 0;
+                        color: $color-page-active;
+                        text-align: center;
+                    }
+    
+                }
+    
+                
+                .content-products {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin: 0 -4px;
+                    padding: 0 -4px;
+                    position: relative;
+    
+    
+                    .product {
+                        width: calc(100% /4);
+                        margin-bottom: 30px;
+                
+                        .infor {
+                    
+                            .progress-buy {
+                                display: none;
+                            }
+                    
+                            .progress-buy-text {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1100px) {
+
+    .male-distance{
+        .sidebar {
+            margin-top: 80px;
+        }
+        .male {
+            margin-top: 40px;
+    
+            .wapper-male {
+    
+                .sidebar-left {
+                    width: 30%;
+                    padding: 0 5px;
+                }
+                .content {
+                  width: 100%;
+    
+                  .content-products {
+    
+                      .product {
+                          width: calc(100% /3);
+                      }
+                  }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .male-distance {
+
+        .sidebar {
+            margin-top: 110px;
+        }
+
+        .male {
+            padding: 0 6px;
+    
+            .wapper-male {
+                padding: 0 10px;
+                display: block;
+        
+                .content {
+                  
+                    .content-products {
+    
+                        .product {
+                            width: calc(100% /2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

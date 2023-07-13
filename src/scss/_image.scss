@@ -1,0 +1,67 @@
+@import './variable';
+
+.sizes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    right: 2%;
+    bottom: 3%;
+    height: auto;
+    background-color: $background-color-white;
+    padding: 16px 10px;
+    align-items: center;
+    text-align: center;
+    display: none;
+
+    .label {
+        font-size: $front-size;
+        color: $color-close;
+        font-weight: 550;
+
+    }
+
+    .size {
+        display: inline-block;
+        height: min-content;
+        align-content: center;
+        margin: 24px  0  6px;
+
+
+        .size-name {
+            --height: 36px;
+            height: var(--height);
+            line-height: var(--height);
+            display: inline-flex;
+            align-items: center;
+            text-align: center;
+            margin: 4px;
+            cursor: pointer;
+
+
+            .name {
+                width: var(--height);
+                height: var(--height);
+                line-height: var(--height);
+                font-size: $front-size;
+                color: $color-text-noactive;
+                border: 1px solid $color-close;
+            }
+        }
+    }
+
+    .add-to-card {
+        outline: none;
+        border: none;
+        background-color: #a7b2ba;
+        padding: 6px 8px;
+        margin-bottom: 5%;
+        color: $color-text-noactive;
+        cursor: pointer;
+    }
+    
+}
+
+

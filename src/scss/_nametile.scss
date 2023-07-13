@@ -1,0 +1,87 @@
+@import './variable';
+.cay {
+
+    ul {
+        display: flex;
+        text-align: center;
+        list-style: none;
+        height: inherit;
+        align-items: center;
+        
+        .title-name {
+            margin-right: 24px ;
+            padding: 0 10px;
+            line-height: 80px;
+            width: 100%;
+            width: max-content;
+            height: 80px;
+            position: relative;
+
+            
+            
+            a {
+                font-weight: 600;
+                color: #6c757b;
+                text-decoration: none;
+                text-transform: none;
+               
+            }
+            
+    
+            .active-name {
+                content: " ";
+                position: absolute;
+                display: block;
+                padding: 0;
+                margin: 0;
+                width: 20px;
+                height: 4px;
+                border-radius: 2px;
+                background-color: $color-page-active;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 25%;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+
+    .cay {
+
+        ul {
+            // background-color: $background-slider;
+
+            .title-name {
+                margin-right: 14px ;
+                height: 40px;
+                line-height: 40px;
+
+                a {
+                    font-weight: 500;
+                    line-height: 40px;
+                    height: 40px;
+
+                    &.active ::after{
+                                content: " ";
+                                position: absolute;
+                                display: block;
+                                padding: 0;
+                                margin: 0;
+                                width: 20px;
+                                height: 4px;
+                                border-radius: 2px;
+                                background-color: $color-page-active;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                bottom: 10%;
+                    }
+
+                }
+                
+            }
+        }
+    }
+}

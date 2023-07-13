@@ -1,0 +1,28 @@
+@import './variable';
+
+.pc {
+    display: block;
+    position: absolute;
+    top: calc( $height-header / 2 + 50%);
+    right: 0;
+    width:360px ;
+    max-height: 450px;
+    height: auto;
+    background-color:$background-color-white ;
+    box-shadow: $box-shadown;
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+        
+    .pc {
+        position: fixed;
+        width: 100%;
+        max-height: 100vh;
+        // height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+  }

@@ -1,0 +1,176 @@
+
+
+.check-review {
+
+    .checkout-step-title {
+        margin-bottom: 16px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+
+        h2 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 36px;
+            color: #333f48;
+            margin: 0;
+        }
+    }
+
+    .checkout-cart-iterms {
+        width: 100%;
+        background-color: #333f48;
+        color: white;
+        
+        .col {
+            text-align: left;
+            padding: 24px 16px 20px;
+
+        }
+        .iterm {
+            width: 40%;
+        }
+
+        .price {
+            width: calc(60% /4);
+        }
+
+        .qty {
+            width: calc(60% /4);
+        }
+
+        .subtotal {
+            width: calc(60% /4);
+        }
+
+        .action {
+            width: calc(60% /4);
+        }
+    }
+
+    .checkout-cart-view {
+        display: block;
+    }
+}
+.cart-view {
+    
+    .cart-padding {
+
+        .warrper {
+
+            .cart-detail {
+                display: flex;
+                width: 100%;
+                height: 129px;
+
+                &:hover {
+
+                    .close {
+                        display: block;
+                    }
+                }
+
+                .col {
+                    padding: 24px 16px 20px;
+                }
+
+                .cart-image {
+                    width: 40%;
+                    display: flex;
+                    img {
+                        width: auto;
+                        height: 90px;
+                    }
+
+                    .title-close-checkout {
+                        display: block;
+                        padding: 0px 16px 20px;
+                        
+    
+                        
+                        .navlink-checkout {
+                            font-weight: 500;
+                            font-size: 12px;
+                            line-height: 16px;
+                            color: #77757f;
+                        }
+
+                        .cart-size-checkout {
+                            margin-top: 13px;
+                            display:  flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            line-height: 16px;
+                            
+
+                            .size {
+                                font-weight: 600;
+                                font-size: 12px;
+                                vertical-align: top;
+                            }
+
+                            img {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 100%;
+
+                            }
+                        }
+                    }
+                }
+
+                .cart-infor {
+                    width: calc(60% / 4);
+
+                    .cart-price {
+
+                        p {
+                            font-size: 13px;
+                        }
+                    }
+
+                    .none-stock {
+                        margin-top: 12px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        color: #fdaa63;
+                        text-decoration: line-through;
+                    }
+                }
+
+                .tongle-checkout {
+                    width: calc(60% / 4);
+                    display: flex;
+
+                    .cart-icon-checkout {
+                        border-radius: 100%;
+                        border: 1px solid #d2d1d4;
+                        padding: 1px;
+                        color: #d2d1d4;
+
+                        
+                    }
+
+                    .cart-icon-checkout--add {
+                        color: #333f48;
+                    }
+
+                    p {
+                        margin: 0 10px;
+                    }
+
+                }
+                .tongle-checkout-shipping {
+                    display: none;
+                }
+
+                .close {
+                    width: 10%;
+                    display: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

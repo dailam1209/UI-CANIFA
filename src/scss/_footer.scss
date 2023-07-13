@@ -1,0 +1,128 @@
+
+
+.wrapper-footer {
+    border-top: 1px solid #e6e7e8;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: min-content;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    padding: 30px 20px;
+    line-height: 1.71;
+    margin-top: auto;
+    border-bottom: 1px solid #e6e7e8;
+
+    .col {
+        padding: 0 16px;
+
+        h3 {
+            margin: 0 0 23px;
+            display: block;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 19px;
+            text-transform: uppercase;
+        }
+    }
+
+    .col-1 {
+        width: 35%;
+
+        p {
+            max-width: 320px;
+            font-weight: 400;
+        }
+    }
+
+    .col-2 {
+         width: 15%;
+
+         ul {
+            list-style: none;
+            font-weight: 500;
+            color: #333f48;
+
+            li {
+                margin: 0 0 14px;
+
+                &:hover {
+                    color: #da291c;
+                    cursor: pointer;
+                }
+            }
+         }
+         
+    }
+
+    .col-3 {
+        width: 22%;
+        ul {
+            list-style: none;
+            font-weight: 500;
+            color: #333f48;
+
+            li {
+                margin: 0 0 14px;
+
+                &:hover {
+                    color: #da291c;
+                    cursor: pointer;
+                }
+            }
+         }
+    }
+
+    .col-4 {
+        width: 28%;
+
+        .application {
+            display: flex;
+            height: 88px;
+            max-height: 88px;
+            
+            .bancode {
+                margin-right: 12px;
+                width: 88px;
+
+                img {
+                    width: 88px;
+                    height: 100%;
+                }
+            }
+            .apps {
+    
+                a {
+                    margin-bottom: 8px;
+                    
+                    img {
+                        width:105px ;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+        .payment {
+            margin-bottom: 19px;
+            margin-top: 24px;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 650px) {
+
+    .wrapper-footer {
+        display: block;
+
+        .col {
+            width: 100%;
+        }
+    }
+}

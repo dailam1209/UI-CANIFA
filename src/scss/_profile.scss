@@ -1,0 +1,166 @@
+@import './variable';
+
+.profile-warrper {
+    display: flex;
+    padding: 100px 30px;
+   
+
+    .profile {
+        width: 30%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        justify-content: space-between;
+        height: max-content;
+        padding-bottom: 20px;
+
+        .profile-user-title {
+            display: block;
+            height: 53px;
+            width: 100%;
+            padding: 20px;
+
+            .profile-usertitle {
+                color: rgb(71, 74, 76);
+                font-size: 16px;
+                font-weight: 550;
+            }
+        }
+
+        .cpoint {
+            display: flex;
+            padding: 0 0 11px;
+
+            .profile-cpoint {
+                display: flex;
+                width: 33.33%;
+                padding: 0 0 0 20px;
+                justify-content: space-between;
+                border-right: 1px solid #c8c7cc;
+                align-items: center;
+                text-align: center;
+
+                .profile-cpoint-item {
+
+                    .title {
+                        top: 0;
+                        font-size: 12px;
+                        height: 18px;
+                        margin-bottom: 5px;
+                    }
+
+                    .value {
+                        font-size: 18px;
+                    }
+                    .color-cpoint {
+                        color: rgb(218, 41, 28); 
+                        font-weight: 500;
+                    }
+
+                    .value.color-KHTT {
+                        color: rgb(99, 177, 188) !important;
+                    }
+    
+                    .color-user-green {
+                        font-size: 12px ;
+                        background: rgb(116, 170, 80);
+                        border-radius: 10px;
+                        margin: 2px 0;
+                        line-height: 22px;
+                    }
+                }
+
+
+                
+
+               
+            }
+
+            .profile-cpoint:last-child {
+                border-right: none;
+            }
+        }
+
+        .profile-support {
+
+            display: block;
+            padding: 24px 15px 0;
+            padding: 20;
+            text-align: center;
+
+            b {
+                line-height: 18px;
+                font-weight: 700;
+                font-size: 14px;
+                color: #333f48;
+
+            }
+            p {
+
+                line-height: 21px;
+                font-size: 12px;
+                a {
+                    text-decoration: none;
+                    color: #63b1bc;
+                    padding: 0 2px;
+                }
+            }
+        }
+
+    }
+
+
+    .profile-content {
+        padding: 0 0 0 80px;
+        width: 70%;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .profile-warrper{
+
+        .profile {
+            display: block;
+            position: fixed;
+            z-index: 2000 ;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: fit-content;
+            background-color: #fff;
+        }
+        .profile-content {
+            position: relative;
+            padding: 0 10px;
+            width: 100%;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 920px){
+    .profile-warrper{
+        display: flex;
+        padding: 50px 15px;
+
+        .profile {
+            position: fixed;
+            top: 150px;
+            bottom: 0;
+            width: 70%;
+            height: 100vh;
+            // background-color: rgba(51, 63, 72, 0.24);
+        }
+        .profile-content {
+            padding: 0 10px;
+            width: 100%;
+
+            .warrper-account{
+                width: 100%;
+                margin: auto ;
+            }
+        }
+    }
+
+}

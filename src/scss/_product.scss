@@ -1,0 +1,282 @@
+@import './variable';
+
+.product {
+    --height: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    padding: 0 4px;
+
+    .product-image-pos {
+        position: relative;
+        display: block;
+        width: 100%;
+
+
+        img {
+            width: 100%;
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            border: none;
+            font-size: $front-size;
+            font-weight: 300;
+            padding: 12px 8px;
+            color: $background-header;
+            background-color: $background-color-white;
+            display: none;
+            cursor: pointer;
+        }
+
+       
+
+        .like {
+            position: absolute;
+            top: 4%;
+            right: 5%;
+            display: flex;
+            height: 40px;
+            align-items: center;
+            text-align: center;
+            background-color: $background-header;
+            
+
+            p {
+                font-weight: 500;
+                height: 40px;
+                line-height: 100%;
+                font-size: $front-size;
+                width: 0;
+                -webkit-transition: .3s;
+                -o-transition: .3s;
+                transition: .3s;
+                display: none;
+                
+                
+            }
+
+            img {
+                background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjU3NzUgMjAuNTc5N0wyMC4zOTM4IDEyLjc2MzRDMjIuMzE0NCAxMC44NDI4IDIyLjU5NzcgNy42ODMyMyAyMC43ODAyIDUuNjY0ODhDMjAuMzI1IDUuMTU3ODYgMTkuNzcxMiA0Ljc0ODkgMTkuMTUyNyA0LjQ2Mjk3QzE4LjUzNDEgNC4xNzcwNCAxNy44NjM4IDQuMDIwMTMgMTcuMTgyNyA0LjAwMTgxQzE2LjUwMTUgMy45ODM1IDE1LjgyMzcgNC4xMDQxNiAxNS4xOTA3IDQuMzU2NDNDMTQuNTU3NyA0LjYwODcxIDEzLjk4MjggNC45ODczMSAxMy41MDA5IDUuNDY5MTNMMTIuMDMxOCA2LjkzODI1TDEwLjc2MzQgNS42Njk4MUM4Ljg0MjgzIDMuNzQ5MjYgNS42ODMyMyAzLjQ2NTkxIDMuNjY0ODggNS4yODM0QzMuMTU3ODUgNS43Mzg2NiAyLjc0ODkgNi4yOTI0NCAyLjQ2Mjk3IDYuOTEwOTZDMi4xNzcwNCA3LjUyOTQ5IDIuMDIwMTMgOC4xOTk3OSAyLjAwMTgxIDguODgwOTZDMS45ODM1IDkuNTYyMTMgMi4xMDQxNSAxMC4yMzk5IDIuMzU2NDMgMTAuODcyOUMyLjYwODcgMTEuNTA1OSAyLjk4NzMxIDEyLjA4MDggMy40NjkxMyAxMi41NjI3TDExLjQ4NjIgMjAuNTc5N0MxMS42MzA5IDIwLjcyNDQgMTEuODI3MiAyMC44MDU3IDEyLjAzMTggMjAuODA1N0MxMi4yMzY1IDIwLjgwNTcgMTIuNDMyOCAyMC43MjQ0IDEyLjU3NzUgMjAuNTc5N1oiIHN0cm9rZT0iIzMzM0Y0OCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K) !important;
+                background-repeat: no-repeat;
+                background-position:center;
+                background-size: auto;
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+                background-color: $background-color-white;
+
+            }
+
+            
+
+            &:hover {
+                p {
+                    padding: 0 2px 0 6px;
+                    color: $color-text;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    width: auto;
+                    -webkit-transition: .3s;
+                    -o-transition: .3s;
+                    transition: .3s;
+                    display: flex;
+                }
+               
+                
+                img {
+                    background-color: $background-header;
+                }
+
+                
+            }
+        }
+        
+    }
+
+    // .padding {
+        //     cursor: pointer;
+        
+        
+        .radio-depcription {
+            position: relative;
+            margin: 3% 0;
+            
+    
+            // .check-radio {
+            //     position: absolute;
+            //     height: 20px;
+            //     line-height: 20px;
+            //     color: transparent;
+            //     display: flex;
+            //     padding: none;
+            //     left: 0;
+            //     // top: 0;
+            //     // background-color: $background-slider;
+            //     color: transparent;
+            //     display: none;
+    
+            //     input {
+
+            //         display: block;
+            //         margin-right: 24px;
+            //         margin-left: 1px;
+            //     }
+            // }
+            // .label {
+            //     height: 20px;
+            //     line-height: 20px;
+            //     display: flex;
+            //     position: absolute;
+            //     top: 0;
+            //     left: 0;
+                
+            //     label {
+            //         background-color: $color-page-active;
+            //         margin-right: 20px;
+            //         height: 20px;
+            //         z-index: 10;
+            //         padding: 0 4px;
+            //         z-index: 10;
+            //         color: red;
+            //         color:transparent;
+            
+            //     }
+            // }
+        
+            .check-color {
+                display: flex;
+                height: var(--height);
+                width: calc(28px * 5);
+                overflow-x: hidden;
+                line-height: var(--height);
+                position: absolute;
+                top: 0;
+                left: 0;
+        
+                img {
+                    z-index: 6;
+                    height: var(--height);
+                    line-height: var(--height);
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                  
+                }
+
+                .color-more {
+                    position:absolute;
+                    width: var(--height);
+                    height: var(--height);
+                    line-height: var(--height);
+                    right: 0;
+                    border: none;
+                    border-radius: 50%;
+                    z-index: 7;
+                    font-size: 12px;
+                    background-color: #e5e3e8;
+                    color: #b9b8bb;
+                }
+                
+
+                
+
+
+        
+        
+                // check-img
+                // img {
+                //    
+                //     border-radius: 50%;
+                //     padding: 2px;
+                //     border: 1px solid #d2d1d4;
+                    // }
+
+                }
+            }
+            .infor {
+                margin-top: 17%;
+                text-align: left;
+                height: auto;
+
+                p:first-child {
+                    margin-bottom: 4px;
+                    line-height: 21px ;
+                    height: 21px;
+                    width: 80%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                p:not(:first-child) {
+                    line-height: 18px ;
+                    height: 24px;
+                    align-items: center;
+                    font-weight: 500;
+                    font-style: normal;
+                    color: $background-header;
+                    margin: 0 8px 0 0;
+                    font-size: $front-size;
+                }
+                
+                .stock {
+                    font-size: calc($front-size + 1px);
+                    text-decoration: line-through;
+                    color: $color-text-old-price !important;
+                    margin-bottom: 4px;
+                }
+                .sale-onday {
+                    font-weight: 500;
+                    font-size: $front-size;
+                    height: 24px;
+                    line-height: 21px;
+                    margin-top: 14px;
+                    color: rgb(253, 170, 99) !important
+                }
+
+                .progress-buy {
+                    position: relative;
+                    margin-top: 18px;
+                    margin-bottom: 8px;
+                    background-color: #f6f6f6;
+                    border-radius: 3px;
+                    background-image: none;
+                    display: block;
+                    width: 100%;
+                    height: 8px;
+
+                    .progress {
+                        height: 8px;
+                        background: #63b1bc;
+                        border-radius: 3px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+
+                    }
+                    
+                    
+                }
+                .progress-buy-text {
+                    font-size: $front-size;
+                    height: 21px;
+
+                    span {
+                        color:  #63b1bc;
+                    }
+                }
+            }
+
+            &:hover .btn {
+                display: block;
+        }
+
+}
+

@@ -1,0 +1,99 @@
+@import './variable';
+
+.hover {
+    .iterm {
+        display: flex;
+        align-items: center;
+        height: 43px;
+        padding: 0 0 0 20px;
+        text-decoration: none;
+        border-top: 1px solid #f6f6f6;
+    
+        .title-sidebar {
+            margin: 0 10px;
+            color: #333f48;
+            font-size: 14px;
+        }
+    }
+}
+
+.hover {
+    .active-sidebar-profile {
+        position: relative;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background-color: red;
+            left: 0;        
+        }
+        .icon-sidebar {
+            display: none;
+        }
+    
+        .active-icon {
+            display: flex;
+        }
+    
+        .title-sidebar {
+            font-weight: 550;
+        }
+    
+    }
+}
+
+
+.hover {
+    .inactive {
+    
+        .icon-sidebar {
+            display: flex;
+        }
+        
+        .active-icon {
+            display: none;
+        }
+    }
+}
+
+
+.hover {
+    &:hover {
+        .active-sidebar-profile {
+            
+            .icon-sidebar {
+                display: none;
+            }
+        
+            .active-icon {
+                display: flex;
+            }
+            .title-sidebar {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+            
+            
+                
+            
+            
+        
+        }
+        .inactive {
+            .icon-sidebar {
+                display: none;
+            }
+            
+            .active-icon {
+                display: flex;
+            }
+
+            .title-sidebar {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+        }
+    }
+}

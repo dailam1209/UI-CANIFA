@@ -1,0 +1,27 @@
+
+.wrapper-show-search {
+    display: block;
+    width: 196px;
+    font-size: 14px;
+    font-weight: 500;
+    height: max-content;
+
+}
+
+.box {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.show-text {
+    padding: 0 10px;
+    display: block;
+    min-width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: 1px solid #f6f6f6;
+    color: #333f48;
+}

@@ -1,0 +1,95 @@
+@import './variable';
+
+
+
+.contact {
+    min-height: 120px;
+    max-height: 240px;
+    height: 100%;
+    border-radius: 20px 0 20px 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+
+    .warrper {
+        height: 100%;
+
+        
+        .block {
+            background-color: #f6f6f6;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-right: 40px;
+            padding-left: 40px;
+            
+            .block-title {
+                display: block;
+                width: 40%;
+                font-size: 18px;
+                font-weight: 700;
+                margin-right: 20px;
+                line-height: 29px;
+                text-align: flex-end;
+            }
+    
+            .form-subscribe {
+                display: flex;
+                width: 60%;
+                height: 48px;
+                font-size: $front-size;
+                padding-right: 44px;
+                border: none;
+    
+                
+                input {
+                    width: 80%;
+                    line-height: 48px;
+                    outline: none;
+                    border: none;
+                    padding: 0 10px;
+    
+    
+                }
+    
+                button {
+                    align-items: center;
+                    cursor: pointer;
+                    width: 15%;
+                    height: 100%;
+                    line-height: 100%;
+                    border: none;
+                    font-size: large;
+                    background-color: $background-color-white;
+                }
+            }
+         }
+
+         .block-right {
+            border-radius: 0 0 20px 0;
+
+            .icons {
+                height: 48px;
+                line-height: 48px;
+                align-items: center;
+                
+                a {
+                    display: flex;
+                    color: $background-header;
+
+
+                    .icon {
+                        font-size: 40px;
+                        margin-right: 20px;
+                    }
+                }
+                
+            }
+         }
+
+        
+    }
+}

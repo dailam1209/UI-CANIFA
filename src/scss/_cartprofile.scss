@@ -1,0 +1,112 @@
+@import './variable';
+
+.wrapper-cartprofile {
+    display: block;
+
+    .invoice-of-you {
+        font-size: 25px;
+        font-weight: 550;
+        margin-bottom: 20px;
+    }
+
+    .all {
+        font-size: 14px;
+        font-weight: 550;
+        padding-bottom: 20px;
+        position: relative;
+        width: max-content;
+
+        &::before {
+            content: " ";
+            position: absolute;
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: red;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 25%;
+        }
+    }
+
+    .row-cart {
+        margin-top: 20px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #f6f6f6;
+        padding: 10px 20px;
+        font-weight: 550;
+
+        .row-cart-text {
+            width: 25%;
+        }
+
+
+       
+    }
+
+    .carts-detail {
+        display: flex;
+        margin: 10px 20px;
+        border-bottom: 1px solid #f6f6f6;
+        align-items: center;
+    
+
+        .wrapper-img {
+            width: 25%;
+
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        }
+
+        .date {
+            width: 25%;
+        }
+
+        .count {
+            width: 25%;
+        }
+
+        .total {
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
+            .status-order {
+
+                width: 40px;
+                display: flex;
+                text-align: end;
+                
+                p {
+                    text-align: center;
+                    font-size: 11px;
+                    color: #63b1bc;
+                }
+            }
+
+        }
+
+       
+
+
+    }
+
+    .pagination {
+        margin: 20px 0;
+        width: 100%;
+        
+        .stack {
+            width: max-content;
+            margin-left: auto;
+        }
+    }
+}
