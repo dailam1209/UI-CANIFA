@@ -439,7 +439,7 @@ const onApprove = (data, actions) => {
             </div>
         </div>
       </PayPalScriptProvider>
-    )
+    );
 }
 
 export default ShopCart;

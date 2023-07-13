@@ -326,7 +326,7 @@ const ProductBuy = ( ) => {
       setProductDetails(product);
       setProductId(product[0]._id)
       console.log("listFilterImage", listFilterImage);
-      choose = await product[0].code + '0';
+      choose = (await product[0].code) + '0';
       setqCode(product[0].code);
       setPrice(product[0].price);
       setDiscount(product[0].price);
@@ -428,8 +428,7 @@ const ProductBuy = ( ) => {
     }
   }, []);
 
-  return (
-  <>
+  return <>
     { loading === false ? (
       <>
       
@@ -602,9 +601,7 @@ const ProductBuy = ( ) => {
     )
     }
     
-  </>
-    
-  );
+  </>;
 };
 
 export default ProductBuy;

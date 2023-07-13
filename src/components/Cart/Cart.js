@@ -134,187 +134,187 @@ function Cart() {
   
   
   return (
-      <div className="cart">
-        <div className="cart-padding">
-          {lengthCart > 0 ? (
-            <>
-              <div className="cart-count-check">
-                <FontAwesomeIcon
-                  className="icon-check-out"
-                  icon={faChevronLeft}
-                  onClick={handleClose}
-                />
-                <p className="cart-count">({lengthCart}) sản phẩm trong giỏ hàng</p>
-                <p className="cart-count">Giỏ hàng ({cartBuyRedux.length})</p>
-              </div>
+    <div className="cart">
+      <div className="cart-padding">
+        {lengthCart > 0 ? (
+          <>
+            <div className="cart-count-check">
+              <FontAwesomeIcon
+                className="icon-check-out"
+                icon={faChevronLeft}
+                onClick={handleClose}
+              />
+              <p className="cart-count">({lengthCart}) sản phẩm trong giỏ hàng</p>
+              <p className="cart-count">Giỏ hàng ({cartBuyRedux.length})</p>
+            </div>
 
-              <div className="wapper-scroll">
-                {/* product detail */}
-                <div className="warrper">
-                  {
-                    cartBuyRedux.map((_, index) => (
-                      <>
-                      <div className="cart-detail">
-                        <div className="cart-image">
-                          <NavLink to="/product">
-                            <img
-                              className="img-product"
-                              src={_.productImage}
-                              alt={_.productImage}
-                            />
-                          </NavLink>
-                          
-                          {/* end check title */}
-                        </div>
-                        <div className="cart-infor">
-                          {/* click icon cart */}
-                          <div className="title-close">
-                            <NavLink
-                              to="/product"
-                              className="navlink"
-                              style={{ textDecoration: "none" }}
-                            >
-                              <p className="title">Ao phong dai tay nu co hinh in</p>
-                            </NavLink>
-                          </div>
-                          {/* color cart */}
-                          <div className="cart-size">
-                            <p>{_.size}</p>
-                            <p>/</p>
-                            <img
-                              className="img"
-                              src={_.productColor}
-                              alt=""
-                            />
-                          </div>
-                          {/* end color cart */}
-                          <div className="cart-price">
-                            <p>{String(_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price ).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
-                            <div className="tongle">
-                              <FontAwesomeIcon
-                                className="cart-icon"
-                                icon={faSubtract}
-                                onClick={() => dispatchDecProduct(`${_.id}`, `${_.productImage}`, `${_.size}`, {index}, `${_.productId}`, `${_.quantity}`)}
-                              />
-                              <p>{_.quantity}</p>
-                              <FontAwesomeIcon 
-                              className="cart-icon"
-                              icon={faAdd} 
-                              onClick={() => dispatchIncrProduct(`${_.id}`, `${_.productImage}`, `${_.size}`, `${_.productId}`, `${_.quantity}` )}/>
-                            </div>
-                          </div>
-                        </div>
+            <div className="wapper-scroll">
+              {/* product detail */}
+              <div className="warrper">
+                {
+                  cartBuyRedux.map((_, index) => (
+                    <>
+                    <div className="cart-detail">
+                      <div className="cart-image">
+                        <NavLink to="/product">
+                          <img
+                            className="img-product"
+                            src={_.productImage}
+                            alt={_.productImage}
+                          />
+                        </NavLink>
                         
-                        <FontAwesomeIcon className="close-pos" icon={faClose} onClick={() => dispatchRemoveProduct({index} ,`${_.productId}`, `${_.size}`, `${_._id}`)} />
+                        {/* end check title */}
                       </div>
-                      </>
-                    ))
-                  }
-                  
+                      <div className="cart-infor">
+                        {/* click icon cart */}
+                        <div className="title-close">
+                          <NavLink
+                            to="/product"
+                            className="navlink"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <p className="title">Ao phong dai tay nu co hinh in</p>
+                          </NavLink>
+                        </div>
+                        {/* color cart */}
+                        <div className="cart-size">
+                          <p>{_.size}</p>
+                          <p>/</p>
+                          <img
+                            className="img"
+                            src={_.productColor}
+                            alt=""
+                          />
+                        </div>
+                        {/* end color cart */}
+                        <div className="cart-price">
+                          <p>{String(_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price ).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
+                          <div className="tongle">
+                            <FontAwesomeIcon
+                              className="cart-icon"
+                              icon={faSubtract}
+                              onClick={() => dispatchDecProduct(`${_.id}`, `${_.productImage}`, `${_.size}`, {index}, `${_.productId}`, `${_.quantity}`)}
+                            />
+                            <p>{_.quantity}</p>
+                            <FontAwesomeIcon 
+                            className="cart-icon"
+                            icon={faAdd} 
+                            onClick={() => dispatchIncrProduct(`${_.id}`, `${_.productImage}`, `${_.size}`, `${_.productId}`, `${_.quantity}` )}/>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <FontAwesomeIcon className="close-pos" icon={faClose} onClick={() => dispatchRemoveProduct({index} ,`${_.productId}`, `${_.size}`, `${_._id}`)} />
+                    </div>
+                    </>
+                  ))
+                }
+                
 
-                  {/* suggesst */}
-                </div>
-                <div className="suggest">
-                  <p className="suggest-title">Có thể bạn sẽ thích</p>
-                  <div className="product-suggest">
-                    <div className="products">
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
-                      <div className="product">
-                        <a href="/" alt="" className="product-link">
-                          <img
-                            className="image-suggest"
-                            src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
-                            alt=""
-                          ></img>
-                          <p className="price-suggest">299.000 ₫</p>
-                        </a>
-                      </div>
+                {/* suggesst */}
+              </div>
+              <div className="suggest">
+                <p className="suggest-title">Có thể bạn sẽ thích</p>
+                <div className="product-suggest">
+                  <div className="products">
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
+                    </div>
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
+                    </div>
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
+                    </div>
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
+                    </div>
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
+                    </div>
+                    <div className="product">
+                      <a href="/" alt="" className="product-link">
+                        <img
+                          className="image-suggest"
+                          src="https://canifa.com/img/210/300/resize/6/t/6tl22w010-sk010-1-thumb.webp"
+                          alt=""
+                        ></img>
+                        <p className="price-suggest">299.000 ₫</p>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="chech-out-and-total">
-                <p className="sum-mobile">Tổng:{String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
-                {/* check all */}
-                <NavLink to="/shopcart">
-                  <button className="check-cart" onClick={() => handleBuy()}>Đặt hàng</button>
-                </NavLink>
-                {/* total */}
-                <p className="sum">Tổng: {String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
+            <div className="chech-out-and-total">
+              <p className="sum-mobile">Tổng:{String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
+              {/* check all */}
+              <NavLink to="/shopcart">
+                <button className="check-cart" onClick={() => handleBuy()}>Đặt hàng</button>
+              </NavLink>
+              {/* total */}
+              <p className="sum">Tổng: {String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
+            </div>
+          </>
+        ) : (
+            <div className="empty-cart">
+              <p>Giỏ hàng(0)</p>
+              <div className="empty-cart-margin">
+                <img src={empty_product} alt="empty"></img>
+                <p>Chưa có sản phẩm</p>
+                <p>trong giỏ hàng của bạn.</p>
+                <FontAwesomeIcon
+                  className="close-cart"
+                  icon={faClose}
+                  onClick={handleClose}
+                />
+                <FontAwesomeIcon
+                  className="close-cart-mobile"
+                  icon={faChevronLeft}
+                  onClick={handleClose}
+                />
               </div>
-            </>
-          ) : (
-              <div className="empty-cart">
-                <p>Giỏ hàng(0)</p>
-                <div className="empty-cart-margin">
-                  <img src={empty_product} alt="empty"></img>
-                  <p>Chưa có sản phẩm</p>
-                  <p>trong giỏ hàng của bạn.</p>
-                  <FontAwesomeIcon
-                    className="close-cart"
-                    icon={faClose}
-                    onClick={handleClose}
-                  />
-                  <FontAwesomeIcon
-                    className="close-cart-mobile"
-                    icon={faChevronLeft}
-                    onClick={handleClose}
-                  />
-                </div>
-              </div>
-          )}
-        </div>
+            </div>
+        )}
       </div>
+    </div>
   );
 }
 
