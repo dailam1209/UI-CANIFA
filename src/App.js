@@ -17,6 +17,14 @@ import Footer from './commons/Header/Footer';
 function App() {
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    if(window.location.pathname == "/login") {
+      document.querySelector('.icon-infor-image__user').click()
+      document.querySelector('.icon-infor-image__user').click()
+      console.log("bbb");
+    }
+
+  }, [window.location.pathname])
   
   // const handleProduct = async () => {
   //   await dispatch(fetchAllProduct());

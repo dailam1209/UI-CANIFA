@@ -27,7 +27,7 @@ const Home = () => {
   
   let filterProduct = [];
   const newArrProduct = useSelector((state) => state.product.product);
-  const isLoading = useSelector((state) => state.product.isLoading);
+  const isSuccess = useSelector((state) => state.product.isSuccess);
   useEffect(() => {
     handleProduct()
     filterProduct =[];
@@ -42,7 +42,7 @@ const Home = () => {
       <div className='padding'>
 
         {
-         isLoading === false &&  newArrProduct?.length > 4 ? (
+         isSuccess === true &&  newArrProduct?.length > 4 ? (
             <>
               <CountDownProduct/>
             </>
@@ -55,7 +55,7 @@ const Home = () => {
           )
         }
          {
-          isLoading === false && newArrProduct?.length > 4 ? (
+          isSuccess === true && newArrProduct?.length > 4 ? (
             <>
               <BackgroundNextProduct/>
             </>

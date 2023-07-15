@@ -13,12 +13,12 @@ import Zoom from "@mui/material/Zoom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { useSelector, useDispatch } from "react-redux";
-import { CircularProgress } from '@mui/material';
-import Nametitle from "../components/Slide/Nametitle";
 import SliderDown from "../components/Slide/SliderDown";
+import { addProduct } from "../redux/product/fetchProductApi";
+import { changeColor } from "../redux/colors";
 
 
-const icon = (
+const icon  = (
   <Paper sx={{ m: 1 }} elevation={4} style={{
     position: 'absolute',
     zIndex: '10',
@@ -44,8 +44,11 @@ const Male = () => {
   const [checked, setChecked] = useState(false);
   const newListProduct = useSelector((state) => state.product.product);
   const isLoading = useSelector((state) => state.product.isLoading);
-  const [product, setProduct] = useState([])
+  const lengthProduct = newListProduct.length;
+  const [product, setProduct] = useState([]);
+  const [colors, setColors] = useState([]);
   const [isSort, setIsSort] = useState(false);
+  const [ loading, setLoading] = useState(false);
   const dec = [];
 
   const handleChange = () => {
@@ -68,15 +71,53 @@ const Male = () => {
     alt: ""
   }
 
+  const fetchApi = async (name, search) => {
+    try {
+     
+      
+      const res = await fetch (`https://vercel-nodejs.onrender.com/api/v2/product/${name}${window.location.search}`);
+        
+      const data = await res.json();
+      const product =  await data.reductProduct;
+      dispatch(
+        addProduct(product)
+      )
+      setLoading(false);
+      
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
 
-  // useEffect(() => {
-  //   if(window.location.search.length > 0) {
-  //     fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
-  //   } else {
 
-  //     fetchApi(window.location.pathname?.replace("/", ""), '');
-  //   }
-  // }, [window.location.pathname?.replace("/", "")])
+  useEffect(() => {
+    setColors([])
+    if(window.location.search.length > 0) {
+      fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
+    } else {
+      fetchApi(window.location.pathname?.replace("/", ""), '');
+    }
+    if(lengthProduct){
+      
+      const listColor = [];
+        const indexId = [];
+        for(let i= 0; i < lengthProduct;i ++) {
+          Array.from(newListProduct[i]).map((color,index) => {
+            if(indexId.indexOf(color.color[0].public_id) === -1){
+              indexId.push(color.color[0].public_id)
+              listColor.push(color.color);
+            }
+        })
+      }
+        // setColors(listColor);
+        dispatch(
+          changeColor(
+            listColor
+          )
+        )
+    }
+  }, [window.location.pathname])
   
 
   return (
@@ -128,7 +169,18 @@ const Male = () => {
                   style={{ transitionDelay: checked ? "100ms" : "0ms",
                   transform: 'translateX(-10px)' }}
                 >
-                  {icon}
+                  {<Paper sx={{ m: 1 }} elevation={4} style={{
+                    position: 'absolute',
+                    zIndex: '10',
+                    width: '100%',
+                    height: 'auto',
+                  }}>
+                  <Box>
+                    <Box>
+                    <CustomViewProduct listColors={colors}/>
+                    </Box>
+                  </Box>
+                  </Paper>}
                 </Zoom>
               </Box>
 

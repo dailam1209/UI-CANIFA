@@ -387,7 +387,7 @@ const Image = (props) => {
                 id={props.image[0].code + index}
                 className={`${props.image[0].code}color`}
                 onClick={(e) => handleChoose(e)}
-                src={_?.color[0].url}
+                src={_?.color[0]?.url}
                 alt=""
                 key={index}
               ></img>

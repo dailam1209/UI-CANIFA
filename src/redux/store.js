@@ -12,6 +12,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import wishListRedux from "./WishList/wishListRedux";
 import inforCheckoutRedux from "./inforCheckoutRedux";
+import colors from "./colors";
 
 const persistConfig = {
     key: "root",
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     wishlist: wishListRedux,
     product : productSlice.reducer,
     payment : PaymentMethod,
-    checkout: inforCheckoutRedux
+    checkout: inforCheckoutRedux,
+    colors: colors
 });
 
 const persistedreducer = persistReducer(persistConfig, rootReducer);

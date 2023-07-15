@@ -61,18 +61,35 @@ function InputSearchHearder()  {
     fetchApi(e);
     setShowResult(false);
   }
+  // const string = "Váy liền nữ cotton sát nách cổ đức có đai thắt eo";
+  // console.log(string.normalize(NFD));
+
   const fetchApi = async () => {
       try {
+          const titles = [];
+          const slugs = [];
+          const listIndex = [];
           const res = await fetch (`https://vercel-nodejs.onrender.com/api/v2/product/search?title=${debounce}`);
           const data = await res.json();
-          console.log(data);
-          setSearchResult(data.listTitle);
+          await data.listTitle.map((slug, index) => {
+            if(!slugs.includes(slug.slug)) {
+              slugs.push(slug.slug);
+              listIndex.push(index)
+            }
+          })
+          console.log("slug", listIndex);
+          await listIndex.map((title, index) => {
+            titles.push(data.listTitle[title]);
+          })
+          setSearchResult(titles);
           setLoading(false);
       }
       catch(error){
           console.log(error);
       }
   }
+
+
 
   useEffect(()=> {
     if (!debounce.trim()) {
@@ -96,8 +113,8 @@ function InputSearchHearder()  {
                 <ShowResultSearch>
                   {
                     searchResult.map((text, index) => (
-                      <NavLink id={text} to={`/search?q=${text}`} onClick={(text) => dispatchProductFilterText(text.target.id)} className="show-text">
-                        <span>{text}</span>
+                      <NavLink id={text.slug} to={`/search?q=${text.slug}`} onClick={(text) => dispatchProductFilterText(text.target.id)} className="show-text">
+                        <span>{text.description}</span>
                       </NavLink>
                     ))
                   }

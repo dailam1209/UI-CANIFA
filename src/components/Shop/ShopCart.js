@@ -56,8 +56,13 @@ const steps = [
 function ShopCart () {
 
   const dispatch = useDispatch();
+  // if(localStorage.getItem('userShop') !== undefined ? JSON.parse(localStorage.getItem('userShop')):  '' ) {
+
+  // }
   const iterm  = localStorage.getItem('userShop') !== undefined ? JSON.parse(localStorage.getItem('userShop')):  '' 
   const token = iterm?.payload?.token;
+
+
   const id = iterm?.payload?.user?._id;
   const amountSum =  useSelector((state) => state.cart.amount);
   const stock =  useSelector((state) => state.cart.stock);

@@ -1362,6 +1362,7 @@
   margin-top: 80px;
 }
 .male-distance .male {
+  margin-top: 40px;
   padding: 0 40px;
 }
 .male-distance .male .wapper-male {
@@ -2783,6 +2784,9 @@
   text-decoration: none;
   border-bottom: 1px solid #f6f6f6;
   color: #333f48;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .main {
@@ -3832,7 +3836,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-  height: min-content;
   width: 100%;
   margin-left: auto;
   margin-right: auto;

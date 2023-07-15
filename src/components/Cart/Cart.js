@@ -16,10 +16,12 @@ import { removeItem } from "../../redux/Cart/cartbuyRedux";
 import { decProduct } from "../../redux/Cart/cartbuyRedux";
 import cartService from "../../redux/Cart/CartService";
 import { ItemComeBack } from "../../hooks/comeback";
+import { useNavigate} from "react-router-dom";
 
 function Cart() {
 
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const cartBuyRedux = useSelector((state) => state.cart.productbuy).filter(iterm => iterm.orderId === "");
   const amountSum =  useSelector((state) => state.cart.amount);
   const token = useSelector((state) => state.user?.userToken);
@@ -113,16 +115,16 @@ function Cart() {
   }
 
   const handleBuy = () => {
-    const token = JSON.parse(localStorage.getItem('userShop'));
-    document.querySelector('.pc').style.display = 'none';
-    if(!token) {
-      // const element = document.querySelector('.icon-infor-image__user')
-      // if (element) {
-      //   element.addEventListener('click', () => {
-      //     element.click();
-      //   });
-      // }
+    console.log("typeof token", typeof token);
+    console.log("window.location.pathname", window.location.pathname);
+    if(window.location.pathname == "/login") {
+      document.querySelector('.icon-infor-image__user').click()
+      // document.querySelector('.icon-infor-image__user').click()
     }
+    // document.querySelector('.pc').style.display = 'none';
+    // if( typeof (JSON.parse(localStorage.getItem('userShop'))) !== Object) {
+    //   navigate('http://localhost:3000/login')
+    // }
   }
 
   
@@ -286,7 +288,7 @@ function Cart() {
             <div className="chech-out-and-total">
               <p className="sum-mobile">Tổng:{String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
               {/* check all */}
-              <NavLink to="/shopcart">
+              <NavLink to={userId ? "/shopcart" : "/login"}>
                 <button className="check-cart" onClick={() => handleBuy()}>Đặt hàng</button>
               </NavLink>
               {/* total */}

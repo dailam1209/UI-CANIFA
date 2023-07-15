@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from '@mui/material/Button';
 import { lastResult } from "../../data/dataImage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/product/fetchProductApi";
 import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +22,27 @@ const CustomViewProduct = () => {
   const [showPrice, setShowPrice] = useState("");
   const [ loading, setLoading] = useState(false);
   const [listFilterImage, setListFilterImage] = useState([])
+  const listProduct = useSelector((state) => state.product.product);
+  const listColors = useSelector((state) => state.colors.colors);
+  const lengthProduct = listProduct.length;
+  
+  
+  // listColor?.map((id,index) => {
+  //   if(!index.includes(id.public_id)){
+  //     indexId.push(id.public_id)
+  //   }
+  // })
+
+  // indexId.map((title, index) => {
+  //   lastColor.push(listColor[title]);
+  // })
+
+  
+
+
+  
+  
+  
 
 
   // price
@@ -194,15 +215,20 @@ const CustomViewProduct = () => {
     return 0;
   }
 
+  
+  
 
-  useEffect(() => {
-    if(window.location.search.length > 0) {
-      fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
-    } else {
 
-      fetchApi(window.location.pathname?.replace("/", ""), '');
-    }
-  }, [window.location.pathname?.replace("/", "")])
+  // useEffect(() => {
+    
+  //   if(window.location.search.length > 0) {
+  //     fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
+  //   } else {
+
+  //     fetchApi(window.location.pathname?.replace("/", ""), '');
+  //   }
+    
+  // }, [window.location])
     
        
   return (
@@ -232,70 +258,19 @@ const CustomViewProduct = () => {
           </div>
           <div className="colors">
             <ul className="list-color">
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="1color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="2color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="3color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="4color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="5color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="6color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="7color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
-              <li onClick={(e) => handleColor(e.target.id)}>
-                <img
-                  id="8color"
-                  className="option-color"
-                  src="https://media.canifa.com/attribute/swatch/images/sm090.png"
-                  alt=""
-                ></img>
-              </li>
+              {
+                listColors?.map((color, index) => (
+                  <li onClick={(e) => handleColor(e.target.id)}>
+                    <img
+                      id={`${index}color`}
+                      className="option-color"
+                      src={color[0].url}
+                      alt={color[0].public_id}
+                    ></img>
+                  </li>
+                ))
+              }
+              
             </ul>
           </div>
         </div>

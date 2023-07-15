@@ -104,6 +104,12 @@ function Header() {
     setModalOpen(false)
   }
 
+  useEffect(() => {
+    if(window.location.pathname == "/login") {
+      setModalOpen(3)
+    }
+  }, [window.location.pathname])
+
 
 
 

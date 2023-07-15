@@ -68,21 +68,27 @@ function AccountUser() {
     const updateDay = () => {
         let e = document.getElementById("day");
         let value = e.value;
-        birthDay[0] = value
+        if(birthDay && birthDay[0]) {
+            birthDay[0] = value
+        }
         setDay(value);
     }
 
     const updateMonth = () => {
         let e = document.getElementById("month");
         let value = e.value;
-        birthDay[1] = value
+        if(birthDay && birthDay[1]) {
+            birthDay[1] = value
+        }
         setMonth(value);
     }
 
     const updateYear = () => {
         let e = document.getElementById("year");
         let value = e.value;
-        birthDay[2] = value
+        if(birthDay && birthDay[2]) {
+            birthDay[2] = value
+        }
         setYear(value);
     }
 
