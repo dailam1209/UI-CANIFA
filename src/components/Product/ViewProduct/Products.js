@@ -4,15 +4,9 @@ import Image from "./Image";
 function Products(product) {
   return (
     <>
-    {
-      product.img ? (
-        <div className="product">
+    <div className="product">
         <Image image={product?.img} show={product?.show} />
       </div>
-      ) : (
-        <></>
-      )
-    }
      
     </>
   );

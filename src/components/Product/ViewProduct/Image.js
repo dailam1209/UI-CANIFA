@@ -311,16 +311,20 @@ const Image = (props) => {
   }
 
   useEffect(() => {
-    if(props?.image?.length > 0) {
-      choose = props?.image[0]?.code + "0";
-      handleChoose(choose);
-    }
+    setTimeout(() => {
+
+      if(props?.image?.length > 0) {
+        choose = props?.image[0]?.code + "0";
+        handleChoose(choose);
+      }
+    }, [400])
     
   }, []);
+  console.log("props?.image?.length", props?.image?.length);
   return (
     <>
       {
-       isSuccess === true   && props?.image?.length > 0  ? (
+        props?.image?.length > 0  ? (
 
       <div onMouseLeave={() => handleDisplayNone()}>
         <div className="product-image-pos">
@@ -382,16 +386,23 @@ const Image = (props) => {
           {/* add */}
           {/* color */}
           <div className={`check-color ${props.image[0].code}color`}>
-            {props?.image.length > 0 && props?.image?.map((_, index) => (
-              <img
-                id={props.image[0].code + index}
-                className={`${props.image[0].code}color`}
-                onClick={(e) => handleChoose(e)}
-                src={_.color[0].url !== undefined ? _.color[0].url : ''}
-                alt=""
-                key={index}
-              ></img>
-            ))}
+            {props?.image.length > 0 && props?.image?.map((_, index) => {
+              {
+                _.color[0].url !== undefined ? (
+
+                  <img
+                    id={props.image[0].code + index}
+                    className={`${props.image[0].code}color`}
+                    onClick={(e) => handleChoose(e)}
+                    src={_.color[0].url}
+                    alt=""
+                    key={index}
+                  ></img>
+                ) : (
+                  <></>
+                )
+              }
+})}
 
             {props.image.length > 3 ? (
               <div
