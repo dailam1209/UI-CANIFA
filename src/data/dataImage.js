@@ -35,6 +35,6 @@ function printWithKey (a, b, c ) {
 
 export const lastResult = (flow, listProduct) => {
     let newArrProduct = []
-    let groupedStudents = groupBy(listProduct, 'code')
+    let groupedStudents = groupBy(listProduct, flow)
     return printWithKey(arrKey, groupedStudents, newArrProduct)
 }

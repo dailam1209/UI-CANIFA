@@ -29,6 +29,7 @@ function Header() {
   const cartBuyRedux = useSelector((state) => state.cart.productbuy).filter(iterm => iterm.orderId === "");
   const iterm  = localStorage.getItem('userShop') !== "" ? JSON.parse(localStorage.getItem('userShop')):  '' 
   const token = iterm?.payload?.token;
+  const userId = useSelector((state) => state.user?.userInfor?._id);
   const isSuccess = iterm?.payload?.success;
   const userImage = iterm?.payload?.user?.article_image;
   let count = cartBuyRedux.length;
@@ -291,7 +292,7 @@ function Header() {
               </div>
               
               <div className="moblie-none">
-                <NavLink to="/profile-wishlist">
+                <NavLink to={userId ? "/profile-wishlist" : "/login"}>
                   <FontAwesomeIcon className="icon-infor" icon={faHeart} />
                 </NavLink>
               </div>

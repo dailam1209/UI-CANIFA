@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
 import { checkEmail, checkCodeApi, deleteCode, changePassword } from "../../redux/apiCalls";
 import { Comeback } from "../../assets/profile";
 import { useDispatch, useSelector } from "react-redux";
@@ -108,9 +107,7 @@ export default function ChangePassword() {
     // check email and code to screen change password
     const handleSubmitEmail = async (event) => {
         event.preventDefault();
-        console.log('aaa');
         const { email  } = event.target.elements;
-        console.log("email", email);
         if(!email) {
             
             alert('Please enter your email.')
@@ -126,7 +123,7 @@ export default function ChangePassword() {
 
                     setRefreshToken(requestCheckEmail.refreshToken);
                     
-                    setCheckCode(2)
+                    setCheckCode(2);
                     noticeSuccess("Have email mached.")
                 }
             }
@@ -141,6 +138,7 @@ export default function ChangePassword() {
                     dispatch(
                         PhoneCheckout(2)
                     )
+                    setForgotPassword(2);
                     deleteCode(email)
                     window.history.pushState("object", "Title", "/resetpassword");
                     noticeSuccess("Have code mached.")
@@ -163,6 +161,7 @@ export default function ChangePassword() {
             }, refreshToken)
             if(request && request.success === true) {
                 noticeSuccess("Password have changed.")
+                window.location.replace("https://1d3a-113-190-58-191.ngrok-free.app/");
             }
             else {
                 notice(request && request.message)

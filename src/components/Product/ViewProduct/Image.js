@@ -382,12 +382,12 @@ const Image = (props) => {
           {/* add */}
           {/* color */}
           <div className={`check-color ${props.image[0].code}color`}>
-            {props?.image?.map((_, index) => (
+            {props?.image.length > 0 && props?.image?.map((_, index) => (
               <img
                 id={props.image[0].code + index}
                 className={`${props.image[0].code}color`}
                 onClick={(e) => handleChoose(e)}
-                src={_?.color[0]?.url}
+                src={_.color[0].url !== undefined ? _.color[0].url : ''}
                 alt=""
                 key={index}
               ></img>

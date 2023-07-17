@@ -27,23 +27,6 @@ const CustomViewProduct = () => {
   const lengthProduct = listProduct.length;
   
   
-  // listColor?.map((id,index) => {
-  //   if(!index.includes(id.public_id)){
-  //     indexId.push(id.public_id)
-  //   }
-  // })
-
-  // indexId.map((title, index) => {
-  //   lastColor.push(listColor[title]);
-  // })
-
-  
-
-
-  
-  
-  
-
 
   // price
   const removeSlectedAll = (remove) => {
@@ -94,7 +77,7 @@ const CustomViewProduct = () => {
     let bool;
     let nextColor;
     nextColor = e;
-    console.log(nextColor)
+    console.log("nextColor", nextColor);
     bool = showColor.indexOf(`${nextColor}`);
     console.log(bool)
     if (bool >= 0) {
@@ -103,12 +86,12 @@ const CustomViewProduct = () => {
       setShowColor(update);
       let colorRemove = document.querySelector('img[id="'+nextColor+'"]');
       
-      colorRemove.classList.remove("border-color");
+      colorRemove?.classList?.remove("border-color");
 
       // return 0;
     } else {
       let color = document.querySelector('img[id="'+nextColor+'"]');
-      color.classList.add("border-color");
+      color?.classList?.add("border-color");
 
       setShowColor((pre) => [...pre, nextColor]);
     }
@@ -120,7 +103,7 @@ const CustomViewProduct = () => {
     if(e === 'empty') {
       let sizeRemove = document.querySelectorAll('.option-size');
       Array.from(sizeRemove).map((_, index) => {
-        _.classList.remove("border-size");
+        _?.classList?.remove("border-size");
       });
       setShowSize([]);
       return 0;
@@ -130,14 +113,14 @@ const CustomViewProduct = () => {
     if (bool >= 0) {
       let updatesize =[...showSize];
       let sizeRemove = document.querySelector('p[id="' + nextSize + '"]');
-      sizeRemove.classList.remove("border-size");
+      sizeRemove?.classList?.remove("border-size");
       updatesize.splice(bool, 1);
       setShowSize(updatesize);
       return 0;
     }
 
     let size = document.querySelector('p[id="' + nextSize + '"]');
-    size.classList.add("border-size");
+    size?.classList?.add("border-size");
     setShowSize((pre) => [...pre, nextSize]);
   };
 
@@ -262,7 +245,7 @@ const CustomViewProduct = () => {
                 listColors?.map((color, index) => (
                   <li onClick={(e) => handleColor(e.target.id)}>
                     <img
-                      id={`${index}color`}
+                      id={`${color[0].public_id}`}
                       className="option-color"
                       src={color[0].url}
                       alt={color[0].public_id}

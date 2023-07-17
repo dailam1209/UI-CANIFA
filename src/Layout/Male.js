@@ -43,6 +43,7 @@ const Male = () => {
   const dispatch = useDispatch()
   const [checked, setChecked] = useState(false);
   const newListProduct = useSelector((state) => state.product.product);
+  const listColors = useSelector((state) => state.colors.colors);
   const isLoading = useSelector((state) => state.product.isLoading);
   const lengthProduct = newListProduct.length;
   const [product, setProduct] = useState([]);
@@ -50,6 +51,27 @@ const Male = () => {
   const [isSort, setIsSort] = useState(false);
   const [ loading, setLoading] = useState(false);
   const dec = [];
+
+
+  //dispatch list color customview
+    if(listColors  && newListProduct){
+      
+      const listColor = [];
+        const indexId = [];
+        for(let i= 0; i < lengthProduct;i ++) {
+          Array.from(newListProduct[i]).map((color,index) => {
+            if(indexId.indexOf(color.color[0].public_id) === -1){
+              indexId.push(color.color[0].public_id)
+              listColor.push(color.color);
+            }
+        })
+      }
+        dispatch(
+          changeColor(
+            listColor
+          )
+        )
+    }
 
   const handleChange = () => {
     document.querySelector('.custom-product').style.display = 'block';
@@ -81,8 +103,9 @@ const Male = () => {
       const product =  await data.reductProduct;
       dispatch(
         addProduct(product)
-      )
+        )
       setLoading(false);
+      return product;
       
     }
     catch(error){
@@ -92,30 +115,13 @@ const Male = () => {
 
 
   useEffect(() => {
-    setColors([])
+    
+    setColors([]);
+    let product;
     if(window.location.search.length > 0) {
-      fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
+      product = fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
     } else {
-      fetchApi(window.location.pathname?.replace("/", ""), '');
-    }
-    if(lengthProduct){
-      
-      const listColor = [];
-        const indexId = [];
-        for(let i= 0; i < lengthProduct;i ++) {
-          Array.from(newListProduct[i]).map((color,index) => {
-            if(indexId.indexOf(color.color[0].public_id) === -1){
-              indexId.push(color.color[0].public_id)
-              listColor.push(color.color);
-            }
-        })
-      }
-        // setColors(listColor);
-        dispatch(
-          changeColor(
-            listColor
-          )
-        )
+      product = fetchApi(window.location.pathname?.replace("/", ""), '');
     }
   }, [window.location.pathname])
   
@@ -177,7 +183,7 @@ const Male = () => {
                   }}>
                   <Box>
                     <Box>
-                    <CustomViewProduct listColors={colors}/>
+                    <CustomViewProduct/>
                     </Box>
                   </Box>
                   </Paper>}

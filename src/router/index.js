@@ -12,6 +12,7 @@ const publicRouter = [
     {path: config.routers.home, component: Home},
     {path: config.routers.login, component: Home},
     {path: "/forgot-password", component: Home},
+    {path: "/resetpassword", component: Home},
     {path: config.routers.login, component: Login},
     {path: config.routers.nam, component: Male},
     {path: config.routers.nu, component: Male},

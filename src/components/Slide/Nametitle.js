@@ -89,7 +89,6 @@ const Nametitle = () => {
       _.classList.remove("active-name");
     });
 
-    console.log(e.target);
     let name;
     name = e.target.id;
 
