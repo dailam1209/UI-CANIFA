@@ -12,6 +12,18 @@ import TimeCountDown from '../components/TimeCount/TimeCountDown';
 import { useState } from 'react';
 
 
+const listBander = [
+  {
+      path: "/search?q=vay",
+      src: "https://media.canifa.com/Simiconnector/list_image_tablet1687251733.webp"
+  },
+  {
+      path: "/search?q=aophong",
+      src: "https://media.canifa.com/Simiconnector/list_image_tablet1687251849.webp"
+  }
+
+]
+
 const Home = () => {
 
   const dispatch = useDispatch();
@@ -81,7 +93,7 @@ const Home = () => {
              {
                flowCodes.map((arryCode, index) => (
                 <div key={index}>
-                  <BackgroundNextProduct  listFlowCode={arryCode}/>
+                  <BackgroundNextProduct  listFlowCode={arryCode} bander={listBander[index]}/>
                 </div>
              ))
             }
