@@ -72,21 +72,37 @@ const Image = (props) => {
     }
 
     // infor to dispatch
-
-    toast.success("Sản phẩm đã được thêm vào yêu thích.", {
-      height: "100%",
-      borderLeft: "5px solid green",
-      position: "top-right",
-      autoClose: 5000,
-      top: "50%",
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      minHeight: "200px",
-      theme: "light",
-    });
+    if(window.location.pathname === '/profile-wishlist') {
+      toast.success("Đã được xóa khỏi yêu thích.", {
+        height: "100%",
+        borderLeft: "5px solid green",
+        position: "top-right",
+        autoClose: 5000,
+        top: "50%",
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        minHeight: "200px",
+        theme: "light",
+      });
+    } else {
+      toast.success("Sản phẩm đã được thêm vào yêu thích.", {
+        height: "100%",
+        borderLeft: "5px solid green",
+        position: "top-right",
+        autoClose: 5000,
+        top: "50%",
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        minHeight: "200px",
+        theme: "light",
+      });
+    }
     dispatch(
       changeWish(
         allInfor
@@ -101,20 +117,27 @@ const Image = (props) => {
   };
 
   const handleHover = (e) => {
-    if (
+    if(window.location.pathname === '/profile-wishlist') {
+      return 0;
+    } else if (
       e.target.src === heart.src ||
       e.target.src === heart.white_src ||
       e.target.src === heart.black_src
     ) {
       e.target.src = heart.white_src;
     }
+    
   };
 
   const handleHoverOut = (e) => {
-    if (e.target.src === heart.src || e.target.src === heart.white_src) {
+    if(window.location.pathname === '/profile-wishlist') {
+      return 0;
+    } else if (e.target.src === heart.src || e.target.src === heart.white_src) {
       e.target.src = heart.black_src;
     }
-  };
+
+    }
+    
 
   // end heart
 
@@ -338,6 +361,7 @@ const Image = (props) => {
                 id="1"
                 name="dailam"
                 className="like"
+               
                 onMouseMove={(e) => handleHover(e)}
                 onMouseOut={(e) => handleHoverOut(e)}
                 onClick={(e) => clickLike(e, props.image[0].code, props.image)}
@@ -346,7 +370,7 @@ const Image = (props) => {
                 <img
                   id="1"
                   className={`like-1`}
-                  src="http://antonandirene.com/build/images/about/snow-small.png"
+                  src={window.location.pathname === '/profile-wishlist' ? "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAzMCAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1Ljc5NTUgMjQuNzk2TDI3LjE5MDcgMTMuNDAwOEMyOS45OTA2IDEwLjYwMDkgMzAuNDAzNiA1Ljk5NDY0IDI3Ljc1NCAzLjA1MjE3QzI3LjA5MDMgMi4zMTI5OSAyNi4yODI5IDEuNzE2OCAyNS4zODEyIDEuMjk5OTVDMjQuNDc5NSAwLjg4MzEwMiAyMy41MDIzIDAuNjU0MzQ3IDIyLjUwOTIgMC42Mjc2NDNDMjEuNTE2MiAwLjYwMDkzOCAyMC41MjgxIDAuNzc2ODQ0IDE5LjYwNTMgMS4xNDQ2M0MxOC42ODI1IDEuNTEyNDEgMTcuODQ0MyAyLjA2NDM2IDE3LjE0MTggMi43NjY3OUwxNSA0LjkwODU2TDEzLjE1MDggMy4wNTkzNkMxMC4zNTA5IDAuMjU5NDUxIDUuNzQ0NjUgLTAuMTUzNjMgMi44MDIxNyAyLjQ5NjAzQzIuMDYyOTkgMy4xNTk3MiAxLjQ2NjggMy45NjcwNiAxLjA0OTk1IDQuODY4NzhDMC42MzMxMDIgNS43NzA1MSAwLjQwNDM0NyA2Ljc0NzcxIDAuMzc3NjQzIDcuNzQwNzZDMC4zNTA5MzggOC43MzM4MiAwLjUyNjg0MyA5LjcyMTkgMC44OTQ2MjYgMTAuNjQ0N0MxLjI2MjQxIDExLjU2NzUgMS44MTQzNiAxMi40MDU4IDIuNTE2NzkgMTMuMTA4MkwxNC4yMDQ1IDI0Ljc5NTlDMTQuNDE1NSAyNS4wMDY5IDE0LjcwMTYgMjUuMTI1NSAxNSAyNS4xMjU1QzE1LjI5ODQgMjUuMTI1NSAxNS41ODQ1IDI1LjAwNjkgMTUuNzk1NSAyNC43OTZaIiBmaWxsPSIjREEyOTFDIi8+Cjwvc3ZnPgo=" : "http://antonandirene.com/build/images/about/snow-small.png"}
                   alt=""
                 ></img>
               </div>

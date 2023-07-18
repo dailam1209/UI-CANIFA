@@ -41,7 +41,6 @@ const Home = () => {
     try {
         const listProduct = await  fetch(`https://vercel-nodejs.onrender.com/api/v2/product/allProduct`);
         const products = await  listProduct.json();
-        console.log("flowCode", products.allproduct);
         const flowCategory = await lastResult('category', products.allproduct);
         const lengthFlowCategory = flowCategory.length;
         const flowCode = [];
@@ -59,10 +58,6 @@ const Home = () => {
   const listFetch = async () => {
     await getAllProduct();
   }
-  
-
-  
-  
   
   useEffect(() => {
     handleProduct();

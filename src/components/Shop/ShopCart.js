@@ -185,23 +185,26 @@ const checkInforhandle = async (username, phone, province, distric, ward, addres
   }
 
   checkoutInfor = true;
-  const response =  updateFetch(profileCheckout, token);
-  if(response && response.success === true) {
-    alert('Update Profile success!')
- }
+  if(paymentMethod === 'Thanh toán khi nhận hàng (COD)') {
+    await createOrderApi();
 
- const user = await getUser(id);
-  if(user !== undefined) {
-      localStorage.setItem('userShop', JSON.stringify({
-
-          "payload" : {
-              "success": user.success,
-              "token": token,
-              "user": user.user
-          }
-          
-      }));
+  } else {
+    const response = await updateFetch(profileCheckout, token);
+    if(response && response.success === true) {
+      alert('Update Profile success!')
+    }
+    const user = await getUser(id);
+      if(user !== undefined) {
+          localStorage.setItem('userShop', JSON.stringify({
+              "payload" : {
+                  "success": user.success,
+                  "token": token,
+                  "user": user.user
+              }
+          }));
+      }
   }
+
 
 
 
@@ -235,7 +238,7 @@ const createOrderApi = async () => {
          
           body: JSON.stringify({
             "userId": id,
-            "amount": amountSum,
+            "amount": total,
             "payment": paymentMethod
           })
       });
@@ -258,7 +261,6 @@ const onApprove = (data, actions) => {
   
   const handleNext = () => {
     setCurrent(Math.min(current + 1, steps.length));
-    console.log("current", current);
   }
 
   const handlePrevious = () => {

@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";
 import request from "../../untils/request"
 import { useDispatch } from "react-redux";
+import { useNavigate} from "react-router-dom";
 import { fetchTitleSearch } from "../../redux/product/fetchProductApi";
 
 
@@ -21,6 +22,7 @@ function InputSearchHearder()  {
 
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // input search
   const inputCurrent = useRef();
   const [searchValue, setSearchValue] = useState("");
@@ -89,6 +91,11 @@ function InputSearchHearder()  {
       }
   }
 
+  const handleClickSearch = async () => {
+    const value = document.querySelector('.input-text').value;
+    navigate(`/search?q=${value}`)
+  }
+
 
 
   useEffect(()=> {
@@ -140,7 +147,7 @@ function InputSearchHearder()  {
                 ></input>
 
                 <div className="icon-search">
-                  <FontAwesomeIcon icon={faSearch} />
+                  <FontAwesomeIcon icon={faSearch} onClick={() => handleClickSearch()} />
                 </div>
                   <div className="close" onClick={handleClose}>
                     {

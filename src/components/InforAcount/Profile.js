@@ -38,7 +38,7 @@ function Profile() {
         localStorage.setItem("userShop",[]);
         localStorage.setItem("wishlist/user-current",[]);
         localStorage.setItem("shop/user-current",[]);
-        window.location.replace("https://1d3a-113-190-58-191.ngrok-free.app");
+        window.location.replace(window.location.origin);
     }
 
     document.addEventListener("click", function(event) {

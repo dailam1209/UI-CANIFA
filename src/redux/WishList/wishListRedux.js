@@ -25,6 +25,7 @@ const wishListSlice = createSlice ({
     initialState: {
         wishList: [],
         isLoading: false,
+        success: false
     },
     reducers: {
         changeWish(state, action) {
@@ -62,9 +63,11 @@ const wishListSlice = createSlice ({
         .addCase(fetchAllWishList.fulfilled, (state, action) => {
           state.isLoading = false;
           state.wishList = action.payload?.flowCode;
+          state.success = false;
         })
         .addCase(fetchAllWishList.rejected, (state, action) => {
             state.isLoading = false;
+            state.success = true;
         })
         
         

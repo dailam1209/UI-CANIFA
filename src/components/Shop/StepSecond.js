@@ -245,7 +245,7 @@ const wardss = async (code) => {
                             <div className="form-group">
                                 <label>Tỉnh / Thành phố</label>
                                 <select id="province" className="form-control"  onClick={() => onChangeProvince()}>
-                                    <option>{province}</option>
+                                    <option>{province.split("-")[0]}</option>
                                     {
                                       provinces?.map((province, index) => (
                                         <option value={province.name + "-" + province.code}>{province.name}</option>
@@ -256,7 +256,7 @@ const wardss = async (code) => {
                             <div className="form-group">
                                 <label>Quận / Huyện</label>
                                 <select id="distric"  className="form-control"  onClick={() => onChangeDistric()}  >
-                                    <option>{distric}</option>
+                                    <option>{distric.split("-")[0]}</option>
                                     {
                                       districs?.map((iterm, index) => (
                                         <option  value={iterm.name + "-" + iterm.code}>{iterm.name}</option>

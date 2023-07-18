@@ -87,20 +87,22 @@ function CartView() {
   }
 
   const dispatchDecProduct = (id , src, size, index, productId, quantity) => {
-    dispatch(
-      decProduct([{
-        id: id,
-        productImage: src,
-        size: size
-      }])
-      )
-      total();
-      console.log("Number(quantity) - 1", Number(quantity) - 1);
-      if( Number(quantity) - 1 === 0 && userId  && token ) {
-        hadleFetchRemoveCart(productId, size);
-      } else if(userId !== undefined && token !== undefined) {
-        hadleFetchCart(productId, Number(quantity) - 1, size)
-      } 
+    if(quantity > 1) {
+      dispatch(
+        decProduct([{
+          id: id,
+          productImage: src,
+          size: size
+        }])
+        )
+        total();
+        console.log("Number(quantity) - 1", Number(quantity) - 1);
+        if( Number(quantity) - 1 === 0 && userId  && token ) {
+          hadleFetchRemoveCart(productId, size);
+        } else if(userId !== undefined && token !== undefined) {
+          hadleFetchCart(productId, Number(quantity) - 1, size)
+        } 
+    }
   }
 
   const handleBuy = () => {

@@ -98,20 +98,23 @@ function Cart() {
   }
 
   const dispatchDecProduct = (id , src, size, index, productId, quantity) => {
-    dispatch(
-      decProduct([{
-        id: id,
-        productImage: src,
-        size: size
-      }])
-      )
-      total();
-      console.log("Number(quantity) - 1", Number(quantity) - 1);
-      if( Number(quantity) - 1 === 0 && userId  && token ) {
-        hadleFetchRemoveCart(productId, size);
-      } else if(userId !== undefined && token !== undefined) {
-        hadleFetchCart(productId, Number(quantity) - 1, size)
-      } 
+    if(quantity > 1) {
+
+      dispatch(
+        decProduct([{
+          id: id,
+          productImage: src,
+          size: size
+        }])
+        )
+        total();
+        console.log("Number(quantity) - 1", Number(quantity) - 1);
+        if( Number(quantity) - 1 === 0 && userId  && token ) {
+          hadleFetchRemoveCart(productId, size);
+        } else if(userId !== undefined && token !== undefined) {
+          hadleFetchCart(productId, Number(quantity) - 1, size)
+        } 
+    }
   }
 
   const handleBuy = () => {
@@ -159,7 +162,7 @@ function Cart() {
                     
                     <div className="cart-detail" key={index}>
                       <div className="cart-image">
-                        <NavLink to="/product">
+                        <NavLink to={`/product/${_.code}`}>
                           <img
                             className="img-product"
                             src={_.productImage}
@@ -290,7 +293,7 @@ function Cart() {
               <p className="sum-mobile">Tổng:{String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>
               {/* check all */}
               <NavLink to={userId ? "/shopcart" : "/login"}>
-                <button className="check-cart" onClick={() => handleBuy()}>Đặt hàng</button>
+                <button className="check-cart" onClick={() => handleBuy()}>Giỏ hàng</button>
               </NavLink>
               {/* total */}
               <p className="sum">Tổng: {String(amountSum).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</p>

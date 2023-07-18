@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 
 
 function BackgroundNextProduct (listFlowCode) {
-    console.log("bander", listFlowCode?.bander);
     const PerViewDetail = [2,2,3,3];
     return (
         

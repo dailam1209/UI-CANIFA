@@ -17,7 +17,7 @@ function StepOne () {
                             </>
                     ) : (
                         <>
-                            Bạn cần mua thêm ${399.000 - amountTotal} đủ điều kiện để nhận miễn phí vận chuyển
+                            Bạn cần mua thêm {String((399.000 - amountTotal).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫  đủ điều kiện để nhận miễn phí vận chuyển
                         </>
                     )
                     }

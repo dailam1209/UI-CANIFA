@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 // import Male from "../../Layout/Male";
 import { useDispatch, useSelector } from "react-redux";
-import { lastResult } from "../../data/dataImage";
 import Products from "../Product/ViewProduct/Products";
-import { addWish, fetchAllWishList } from "../../redux/WishList/wishListRedux";
 
 function Wishlist () {
 
-  const dispatch = useDispatch();
-  const arrayWishList = useSelector((state) => state.wishlist.wishList)
+  const arrayWishList = useSelector((state) => state.wishlist.wishList);
+  const isLoading = useSelector((state) => state.wishlist.isLoading);
 
   // const userId = JSON.parse(localStorage?.getItem('userShop'))?.payload.user._id;
   // const token = JSON.parse(localStorage?.getItem('userShop'))?.payload.token;
@@ -54,6 +52,7 @@ function Wishlist () {
   // });
 
   // },[userId, token])
+  
 
 
     return (
@@ -63,7 +62,7 @@ function Wishlist () {
           </div>
           <div className="content-products">
 
-            {arrayWishList?.map((product, index) => (
+            {arrayWishList && arrayWishList.map((product, index) => (
               <Products img={product} key={index} />
             ))}
           </div>
