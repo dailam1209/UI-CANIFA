@@ -162,16 +162,11 @@ const ProductBuy = ( ) => {
       }
       if(type === ""){
         if(currentNumberImageSlide > number) {
-          // let width = (currentNumberImageSlide - number - 1 )* getImage;
-          // img.style = `margin-left: ${width}px`;
           currentNumberImageSlide = number - 1;
-
           inputSmallImage.target.id =  currentNumberImageSlide;
           scrollImage("abc",inputSmallImage);
         } 
         else {
-          // let width = (number - currentNumberImageSlide - 1 )* getImage;
-          // img.style = `margin-left: -${width}px`;
           currentNumberImageSlide = number - 1;
           inputSmallImage.target.id =  currentNumberImageSlide;
           scrollImage("abc",inputSmallImage);
