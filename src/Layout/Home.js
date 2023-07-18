@@ -80,7 +80,9 @@ const Home = () => {
             <>
              {
                flowCodes.map((arryCode, index) => (
-                <BackgroundNextProduct  listFlowCode={arryCode}/>
+                <div key={index}>
+                  <BackgroundNextProduct  listFlowCode={arryCode}/>
+                </div>
              ))
             }
             </>

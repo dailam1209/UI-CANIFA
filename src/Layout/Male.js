@@ -47,6 +47,7 @@ const Male = () => {
   const isLoading = useSelector((state) => state.product.isLoading);
   const lengthProduct = newListProduct.length;
   const [product, setProduct] = useState([]);
+  const [count, setCount] = useState(0)
   const [colors, setColors] = useState([]);
   const [isSort, setIsSort] = useState(false);
   const [ loading, setLoading] = useState(false);
@@ -57,6 +58,10 @@ const Male = () => {
   
 
   const handleChange = () => {
+    if(count === 0) {
+      listColor();
+      setCount(1)
+    }
     if(document.querySelector('.custom-product').style.display === 'block') {
       document.querySelector('.custom-product').style.display = 'none';
     }
@@ -102,6 +107,28 @@ const Male = () => {
     }
   }
 
+  const listColor = async () => {
+    if(listColors  && newListProduct){
+      const listColor = [];
+      changeColors = [];
+        const indexId = [];
+        for(let i= 0; i < lengthProduct;i ++) {
+          Array.from(newListProduct[i]).map((color,index) => {
+            if(indexId.indexOf(color.color[0].public_id) === -1){
+              indexId.push(color.color[0].public_id)
+              listColor.push(color.color);
+              changeColors.push(color.color);
+            }
+        })
+      }
+        dispatch(
+         await changeColor(
+            listColor
+          )
+        )
+    }
+  }
+
 
   useEffect(() => {
     if(window.location.search.length > 0) {
@@ -110,26 +137,7 @@ const Male = () => {
       fetchApi(window.location.pathname?.replace("/", ""), '');
     }
     //dispatch list color customview
-  if(listColors  && newListProduct){
-    const listColor = [];
-    changeColors = [];
-      const indexId = [];
-      for(let i= 0; i < lengthProduct;i ++) {
-        Array.from(newListProduct[i]).map((color,index) => {
-          if(indexId.indexOf(color.color[0].public_id) === -1){
-            indexId.push(color.color[0].public_id)
-            listColor.push(color.color);
-            changeColors.push(color.color);
-          }
-      })
-    }
-      dispatch(
-        changeColor(
-          listColor
-        )
-      )
-  }
-    
+    setCount(0)
   }, [window.location.pathname])
   
 

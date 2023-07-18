@@ -12,7 +12,7 @@ function BackgroundNextProduct (listFlowCode) {
             <h2 className="title">{listFlowCode.listFlowCode[0][0].category}</h2>
             <div className="wrapper-background-nextproduct">
                 <div className="background-image" >
-                    <img className="image" src="https://media.canifa.com/Simiconnector/list_image_tablet1685493878.webp" alt=""></img>
+                    <img className="image" src="https://canifa.com/nu/vay.html" alt=""></img>
                 </div>
                 <div className="list-product">
                     <NextPreProduct products={listFlowCode.listFlowCode} PerView={PerViewDetail} progressbuy={false}/>

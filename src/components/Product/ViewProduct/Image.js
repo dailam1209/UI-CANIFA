@@ -382,8 +382,8 @@ const Image = (props) => {
             <div className="radio-depcription">
               {/* add */}
               {/* color */}
-              {
-                code ? (
+              {/* {
+                code ? ( */}
 
               <div className={`check-color ${props?.image?.code}color`}>
                 { 
@@ -393,7 +393,7 @@ const Image = (props) => {
                           id={props?.image[0]?.code + index}
                           className={`${props?.image[0]?.code}color`}
                           onClick={(e) => handleChoose(e)}
-                          src={iterm?.color[0]?.url}
+                          src={iterm.color[0].url}
                           alt={iterm?.color[0]?.public_id}
                         ></img>
                         </div>
@@ -414,10 +414,7 @@ const Image = (props) => {
                   <></>
                 )}
               </div>
-                ) : (
-                  <></>
-                )
-              }
+             
             </div>
             <div className="infor">
               <Price show={props.show} infor={props.image[0]} />
