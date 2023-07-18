@@ -859,6 +859,7 @@
   height: var(--height);
   width: 140px;
   overflow-x: hidden;
+  overflow: hidden;
   line-height: var(--height);
   position: absolute;
   top: 0;
@@ -1480,6 +1481,7 @@
   height: auto;
   background-color: white;
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.1), 0 0 16px rgba(0, 0, 0, 0.1);
+  display: none;
 }
 .custom-product .click-custom {
   display: flex;

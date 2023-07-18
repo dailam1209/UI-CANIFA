@@ -20,7 +20,7 @@ import { changeWish } from "../../../redux/WishList/wishListRedux";
 const Image = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isSuccess = useSelector((state) => state.product.isSuccess);
+  const status = useSelector((state) => state.product.status);
   const token = useSelector((state) => state.user.userToken);
   const userId = useSelector((state) => state.user?.userInfor?._id);
 
@@ -40,7 +40,7 @@ const Image = (props) => {
   let color;
   let sizeCurrent;
   let idCurrent;
-  let price;
+ 
 
   
 
@@ -156,6 +156,8 @@ const Image = (props) => {
     });
     
   };
+
+  
   
 
   const handleSize = (e) => {
@@ -311,126 +313,130 @@ const Image = (props) => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-
-      if(props?.image?.length > 0) {
-        choose = props?.image[0]?.code + "0";
-        handleChoose(choose);
-      }
-    }, [400])
     
+      if(props.image.length > 0) {
+        choose = props?.image[0]?.code + "0";
+          handleChoose(choose);
+      }
   }, []);
-  console.log("props?.image?.length", props?.image?.length);
   return (
     <>
       {
-        props?.image?.length > 0  ? (
+         props?.image[0]?.color[0]?.url !== undefined  ? (
+          <div onMouseLeave={() => handleDisplayNone()}>
+            <div className="product-image-pos">
+              <img className={`${props?.image[0]?.code}img`} src={img} alt="" onClick={(e) => dispatchProductCode(e)}/>
+              <button
+                id={`sizes${props?.image[0]?.code}`}
+                onClick={(e) => handleDisplay(e.target.id)}
+                className={`btn`}
+              >
+                Thêm vào giỏ hàng
+              </button>
 
-      <div onMouseLeave={() => handleDisplayNone()}>
-        <div className="product-image-pos">
-          <img className={`${props?.image[0]?.code}img`} src={img} alt="" onClick={(e) => dispatchProductCode(e)}/>
-          <button
-            id={`sizes${props?.image[0]?.code}`}
-            onClick={(e) => handleDisplay(e.target.id)}
-            className={`btn`}
-          >
-            Thêm vào giỏ hàng
-          </button>
-
-          <div
-            id="1"
-            name="dailam"
-            className="like"
-            onMouseMove={(e) => handleHover(e)}
-            onMouseOut={(e) => handleHoverOut(e)}
-            onClick={(e) => clickLike(e, props.image[0].code, props.image)}
-          >
-            <p id={`like-1`}>Yêu thích</p>
-            <img
-              id="1"
-              className={`like-1`}
-              src="http://antonandirene.com/build/images/about/snow-small.png"
-              alt=""
-            ></img>
-          </div>
-          {/* size */}
-          <div className={`sizes sizes${props?.image[0]?.code}`}>
-            <label className="label">Vui lòng chọn size</label>
-            <div className={`size`}>
-              {size.length > 0 ? (
-                size.map((_, index) => (
-                  <div className={`size-name`} key={index}>
-                    <p
-                      className={`name size${props.image[0].code}`}
-                      id={`${props.image[0].code}${index}`}
-                      onClick={(e) => handleSize(e)}
-                    >
-                      {_}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <></>
-              )}
+              <div
+                id="1"
+                name="dailam"
+                className="like"
+                onMouseMove={(e) => handleHover(e)}
+                onMouseOut={(e) => handleHoverOut(e)}
+                onClick={(e) => clickLike(e, props.image[0].code, props.image)}
+              >
+                <p id={`like-1`}>Yêu thích</p>
+                <img
+                  id="1"
+                  className={`like-1`}
+                  src="http://antonandirene.com/build/images/about/snow-small.png"
+                  alt=""
+                ></img>
+              </div>
+              {/* size */}
+              <div className={`sizes sizes${props?.image[0]?.code}`}>
+                <label className="label">Vui lòng chọn size</label>
+                <div className={`size`}>
+                  {size.length > 0 ? (
+                    size.map((_, index) => (
+                      <div className={`size-name`} key={index}>
+                        <p
+                          className={`name size${props.image[0].code}`}
+                          id={`${props.image[0].code}${index}`}
+                          onClick={(e) => handleSize(e)}
+                        >
+                          {_}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <button
+                  id={`imgId${props.image[0].code}`}
+                  className={`add-to-card btn${props.image[0].code}`}
+                  onClick={(e) => dispatchHandle(e.target.id)}
+                >
+                  Thêm vào giỏ
+                </button>
+              </div>
             </div>
-            <button
-              id={`imgId${props.image[0].code}`}
-              className={`add-to-card btn${props.image[0].code}`}
-              onClick={(e) => dispatchHandle(e.target.id)}
-            >
-              Thêm vào giỏ
-            </button>
-          </div>
-        </div>
-        <div className="radio-depcription">
-          {/* add */}
-          {/* color */}
-          <div className={`check-color ${props.image[0].code}color`}>
-            {props?.image.length > 0 && props?.image?.map((_, index) => {
+            <div className="radio-depcription">
+              {/* add */}
+              {/* color */}
               {
-                _.color[0].url !== undefined ? (
+                code ? (
 
-                  <img
-                    id={props.image[0].code + index}
-                    className={`${props.image[0].code}color`}
-                    onClick={(e) => handleChoose(e)}
-                    src={_.color[0].url}
-                    alt=""
-                    key={index}
-                  ></img>
+              <div className={`check-color ${props?.image?.code}color`}>
+                { 
+                    props.image.map((iterm, index) => (
+                      <div key={index}>
+                        <img
+                          id={props?.image[0]?.code + index}
+                          className={`${props?.image[0]?.code}color`}
+                          onClick={(e) => handleChoose(e)}
+                          src={iterm?.color[0]?.url}
+                          alt={iterm?.color[0]?.public_id}
+                        ></img>
+                        </div>
+                        )
+                      )
+                }
+
+                {props.image.length > 3 ? (
+                  <div
+                    id={props.image[0].code}
+                    onClick={(e) => handleOverFllow(e.target.id)}
+                    className="color-more"
+                  >
+                    {" "}
+                    +{props.image.length - 4}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
                 ) : (
                   <></>
                 )
               }
-})}
-
-            {props.image.length > 3 ? (
-              <div
-                id={props.image[0].code}
-                onClick={(e) => handleOverFllow(e.target.id)}
-                className="color-more"
-              >
-                {" "}
-                +{props.image.length - 4}
-              </div>
-            ) : (
-              <></>
-            )}
+            </div>
+            <div className="infor">
+              <Price show={props.show} infor={props.image[0]} />
+              {
+                props.show ? (
+                  <Progressbuy />
+                ) : (
+                  <></>
+                )
+              }
+            </div>
           </div>
-        </div>
-        <div className="infor">
-          <Price show={props.show} infor={props.image[0]} />
-          {
-            props.show ? (
-              <Progressbuy />
-            ) : (
-              <></>
-            )
-          }
-        </div>
-      </div>
         ) : (
-          <></>
+          <>
+           
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+              <CircularProgress />
+            </div>
+            </>
         )
       }
     </>

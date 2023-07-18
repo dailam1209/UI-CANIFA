@@ -154,6 +154,7 @@
                 height: var(--height);
                 width: calc(28px * 5);
                 overflow-x: hidden;
+                overflow: hidden;
                 line-height: var(--height);
                 position: absolute;
                 top: 0;

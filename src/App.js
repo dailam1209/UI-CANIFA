@@ -6,32 +6,11 @@ import { ToastContainer } from 'react-toastify';
 import Header from '../src/commons/Header/Header';
 import { publicRouter } from './router';
 
-import { fetchAllProduct } from './redux/product/fetchProductApi';
-import wishListService from './redux/WishList/wishListService';
-import { useDispatch } from "react-redux";
-import { fetchAllWishList } from './redux/WishList/wishListRedux';
 import Footer from './commons/Header/Footer';
 
 
 
 function App() {
-
-  const dispatch = useDispatch();
-  
-  
-  // const handleProduct = async () => {
-  //   await dispatch(fetchAllProduct());
-  // }
-  // useEffect( () => {
-  //   let pathname = window.location.pathname?.split("/")?.[1];
-  //   if(pathname === "/" || pathname === "" && window.location.href === "" ) {
-
-  //     handleProduct()
-  //   }
-  // },[])
-
-
-  
 
 
   return (

@@ -156,7 +156,8 @@ function Cart() {
                 {
                   cartBuyRedux.map((_, index) => (
                     <>
-                    <div className="cart-detail">
+                    
+                    <div className="cart-detail" key={index}>
                       <div className="cart-image">
                         <NavLink to="/product">
                           <img

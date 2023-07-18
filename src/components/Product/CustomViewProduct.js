@@ -12,7 +12,7 @@ import queryString from 'query-string';
 import { useNavigate } from 'react-router-dom';
 
 
-const CustomViewProduct = () => {
+const CustomViewProduct = (color) => {
  
 
   const navigate = useNavigate();
@@ -25,6 +25,8 @@ const CustomViewProduct = () => {
   const listProduct = useSelector((state) => state.product.product);
   const listColors = useSelector((state) => state.colors.colors);
   const lengthProduct = listProduct.length;
+  const [colors, setColors] = useState([]);
+
   
   
 
@@ -154,19 +156,15 @@ const CustomViewProduct = () => {
         navigate(`?${mastercolor}${size}${price}`);
       }
       if(search !== '') {
-        console.log("have");
         res = await fetch (`https://vercel-nodejs.onrender.com/api/v2/product/${name}${window.location.search}`);
         console.log(`https://vercel-nodejs.onrender.com/api/v2/product/${name}?${search}`);
       } else {
-        console.log("empty");
         res = await fetch (`https://vercel-nodejs.onrender.com/api/v2/product/${name}?${mastercolor}${size}${price}`);
         console.log(`https://vercel-nodejs.onrender.com/api/v2/product/${name}?${mastercolor}${size}${price}`);
       }
       const data = await res.json();
       const product =  await data.reductProduct;
-      console.log(product);
       // setListFilterImage(product);
-      console.log("product", product);
       dispatch(
         addProduct(product)
       )
@@ -202,16 +200,19 @@ const CustomViewProduct = () => {
   
 
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   if(window.location.search.length > 0) {
-  //     fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
-  //   } else {
+    if(window.location.search.length > 0) {
+      fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
+    } else {
 
-  //     fetchApi(window.location.pathname?.replace("/", ""), '');
-  //   }
+      fetchApi(window.location.pathname?.replace("/", ""), '');
+    }
     
-  // }, [window.location])
+    setColors(color.colors)
+  }, [window.location])
+
+ 
     
        
   return (
@@ -242,7 +243,7 @@ const CustomViewProduct = () => {
           <div className="colors">
             <ul className="list-color">
               {
-                listColors?.map((color, index) => (
+                listColors && listColors?.map((color, index) => (
                   <li onClick={(e) => handleColor(e.target.id)}>
                     <img
                       id={`${color[0].public_id}`}

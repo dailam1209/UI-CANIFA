@@ -2,15 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { lastResult } from "../data/dataImage";
 import NextPreProduct from "../components/Product/NextPreProduct";
 import CountDownProduct from "../components/Product/CustomViewProduct";
+import { useState } from "react";
 
 function BackgroundNextProduct (listFlowCode) {
-
-    const newListProduct = useSelector((state) => state.product.product);
-    const newArrProduct = lastResult('code', newListProduct);
-
     const PerViewDetail = [2,2,3,3];
     return (
-
         
         <div className="block">
             <h2 className="title">{listFlowCode.listFlowCode[0][0].category}</h2>

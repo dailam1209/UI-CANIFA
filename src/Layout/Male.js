@@ -50,31 +50,20 @@ const Male = () => {
   const [colors, setColors] = useState([]);
   const [isSort, setIsSort] = useState(false);
   const [ loading, setLoading] = useState(false);
-  const dec = [];
+  let changeColors = [];
 
 
-  //dispatch list color customview
-    if(listColors  && newListProduct){
-      
-      const listColor = [];
-        const indexId = [];
-        for(let i= 0; i < lengthProduct;i ++) {
-          Array.from(newListProduct[i]).map((color,index) => {
-            if(indexId.indexOf(color.color[0].public_id) === -1){
-              indexId.push(color.color[0].public_id)
-              listColor.push(color.color);
-            }
-        })
-      }
-        dispatch(
-          changeColor(
-            listColor
-          )
-        )
-    }
+  
+  
 
   const handleChange = () => {
-    document.querySelector('.custom-product').style.display = 'block';
+    if(document.querySelector('.custom-product').style.display === 'block') {
+      document.querySelector('.custom-product').style.display = 'none';
+    }
+    else {
+
+      document.querySelector('.custom-product').style.display = 'block';
+    }
     setChecked((prev) => !prev);
   };
 
@@ -115,14 +104,32 @@ const Male = () => {
 
 
   useEffect(() => {
-    
-    setColors([]);
-    let product;
     if(window.location.search.length > 0) {
-      product = fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
+      fetchApi(window.location.pathname?.replace("/", ""),window.location.search );
     } else {
-      product = fetchApi(window.location.pathname?.replace("/", ""), '');
+      fetchApi(window.location.pathname?.replace("/", ""), '');
     }
+    //dispatch list color customview
+  if(listColors  && newListProduct){
+    const listColor = [];
+    changeColors = [];
+      const indexId = [];
+      for(let i= 0; i < lengthProduct;i ++) {
+        Array.from(newListProduct[i]).map((color,index) => {
+          if(indexId.indexOf(color.color[0].public_id) === -1){
+            indexId.push(color.color[0].public_id)
+            listColor.push(color.color);
+            changeColors.push(color.color);
+          }
+      })
+    }
+      dispatch(
+        changeColor(
+          listColor
+        )
+      )
+  }
+    
   }, [window.location.pathname])
   
 
@@ -152,7 +159,7 @@ const Male = () => {
               {
                 !checked ? (
               <>
-              <div onClick={handleChange} className="filter filter-product">
+              <div onClick={() => handleChange()} className="filter filter-product">
                   <span >Bộ lọc</span>
                   <img src={filterProduct.filter} alt=""></img>
                 </div>
@@ -162,34 +169,25 @@ const Male = () => {
                 </div>
               </>
                 ) : (
-                  <div onClick={handleChange} className="filter filter-product">
+                  <div onClick={() => handleChange()} className="filter filter-product">
                     <span className="close-options" >Đóng</span>
                 </div>
                 )
               }
               </div>
               <div className="content-products">
+              <Paper sx={{ m: 1 }} elevation={4} style={{
+                position: 'absolute',
+                zIndex: '10',
+                width: '100%',
+                height: 'auto',
+              }}>
               <Box>
-                <Zoom
-                  in={checked}
-                  style={{ transitionDelay: checked ? "100ms" : "0ms",
-                  transform: 'translateX(-10px)' }}
-                >
-                  {<Paper sx={{ m: 1 }} elevation={4} style={{
-                    position: 'absolute',
-                    zIndex: '10',
-                    width: '100%',
-                    height: 'auto',
-                  }}>
-                  <Box>
-                    <Box>
-                    <CustomViewProduct/>
-                    </Box>
-                  </Box>
-                  </Paper>}
-                </Zoom>
+                <Box>
+                <CustomViewProduct colors={changeColors}/>
+                </Box>
               </Box>
-
+              </Paper>
               {
               isSort === false && isLoading === false && newListProduct.length > 0 ? (
 

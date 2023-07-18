@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import NextPreProduct from "../Product/NextPreProduct";
 import { CircularProgress } from '@mui/material';
@@ -9,10 +9,17 @@ import { lastResult } from "../../data/dataImage";
 function CountDownProduct ( listProduct ) {
 
     const newListProduct = useSelector((state) => state.product.product);
+    const isSuccess = useSelector((state) => state.product.isSuccess);
+    const [list, setList] = useState([])
     const isLoading = useSelector((state) => state.product.isLoading);
     const newArrProduct = lastResult('code', newListProduct)
 
     const PerViewDetail = [2,2,3,4];
+    useEffect(() =>{
+        if(newArrProduct) {
+            setList(newArrProduct)
+        }
+    },[])
     return (
         <>
             <Grid 
@@ -29,7 +36,7 @@ function CountDownProduct ( listProduct ) {
             >
                 {/* <TimeCountDown/> */}
             </Grid>
-            { isLoading === false ? (
+            { isLoading === false && isSuccess && newListProduct ? (
                  <div className="res">
                  <Grid sx={{
                          display: 'flex',
@@ -40,7 +47,7 @@ function CountDownProduct ( listProduct ) {
                          width: '100%',
                          maxHeight: '100%',
                      }}>
-                     <NextPreProduct products={newArrProduct} PerView={PerViewDetail} progressbuy={true} />
+                     <NextPreProduct products={list} PerView={PerViewDetail} progressbuy={true} />
                  </Grid>
              </div>
 
