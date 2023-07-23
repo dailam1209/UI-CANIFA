@@ -430,6 +430,9 @@ const Image = (props) => {
 
                 {props.image.length > 3 ? (
                   <div
+                  style={{
+                    cursor: "pointer"
+                  }}
                     id={props.image[0].code}
                     onClick={(e) => handleOverFllow(e.target.id)}
                     className="color-more"
