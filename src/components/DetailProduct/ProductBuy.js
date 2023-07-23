@@ -224,9 +224,7 @@ const ProductBuy = ( ) => {
     
     console.log("input.target.alt", input.target.alt);
     console.log("productDetails[input.target.alt]", productDetails[input.target.alt]);
-    // if(productDetails[input.target.alt].color[0].public_id !== undefined) {
-    //   setColor(productDetails[input.target.alt].color[0].public_id)
-    // }
+   
     let number = input.target.id;
     const slider = document.querySelectorAll('.slider-img');
     let getImage = document.querySelector('.img-view').offsetWidth;
@@ -251,7 +249,7 @@ const ProductBuy = ( ) => {
       }
 
       if(type === "color") {
-        console.log(useRefCode.current == input.target.classList[0].slice(5,input.target.classList[0].length));
+          setColor(productDetails[input.target.alt].color[0].public_id)
         if(useRefCode.current === input.target.classList[0].slice(5,input.target.classList[0].length)) {
           let codeId = input.target.classList[1];
           let choose = input.target.classList[0];
@@ -308,6 +306,7 @@ const ProductBuy = ( ) => {
        
       }
       currentNumberImageSlide = number;
+      
 
     }
 
@@ -324,11 +323,10 @@ const ProductBuy = ( ) => {
       setListFilterImage(product);
       setProductDetails(product);
       setProductId(product[0]._id)
-      console.log("listFilterImage", listFilterImage);
-      choose = (await product[0].code) + '0';
+      choose = product[0].code + '0';
       setqCode(product[0].code);
       setPrice(product[0].price);
-      setDiscount(product[0].price);
+      setDiscount(product[0].price - (product[0].price * product[0].discount / 100));
       setColor(product[0].color[0].public_id);
       useRefCode.current = product[0]?.color[0]?.url.slice(-9);
 
@@ -369,11 +367,7 @@ const ProductBuy = ( ) => {
       setLengthListImage(listImage.length);
       setListFilterImage(listImage)
       setLoading(false);
-      if(choose) {
-        setTimeout(() => {
-          handleChoose(choose.toString());
-        }, [1000])
-      }
+      handleChoose(choose.toString());
       inputSmallImage.target.classList =  product[0].color[0].url.slice(-9);
       scrollImage("", inputSmallImage);
       document.getElementsByClassName(`color${inputSmallImage.target.classList}`)[0].classList.add('border-radius-color')
@@ -501,8 +495,21 @@ const ProductBuy = ( ) => {
             <span>{qCode}</span>
           </div>
           <div className="price">
-            <span>{String(price).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</span>
-            <span>{String(discount).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}.000 ₫</span>
+            {
+              price - discount > 0 ? (
+                <>
+                <span>{String(discount.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫ </span>
+                <span>{String(price.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</span>
+                </>
+              ) : (
+                <>
+                <span>{String(discount.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫ </span>
+                <span style={{
+                  display: "none"
+                }}>{String(price.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</span>
+                </>
+              )
+            }
           </div>
         </div>
         <div className="color-size">
