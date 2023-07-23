@@ -252,9 +252,12 @@ const Image = (props) => {
   };
 
   const handleOverFllow = (e) => {
-    document.querySelector(`.${e}color`).style.overflowX = "none";
-    document.querySelector(`.${e}color`).style.width = "100%";
-    document.querySelector(`.${e}color`).lastChild.style.display = "none";
+    const element = document.getElementsByClassName(`check-color ${e}color`)
+    Array.from(element).map((iterm, index) => {
+      iterm.style.overflowX = "none";
+      iterm.style.width = "100%";
+      iterm.lastChild.style.display = "none";
+    })
   };
 
 
@@ -316,7 +319,7 @@ const Image = (props) => {
       )
       let inforCart =  dispatchProductToCart[0];
       if(userId !== undefined && token !== undefined) {
-        if(dispatchProductToCart.productImage != "" && dispatchProductToCart.id != "" && dispatchProductToCart.color != "" && dispatchProductToCart.size != "" ){
+        if(dispatchProductToCart.productImage !== "" && dispatchProductToCart.id !== "" && dispatchProductToCart.color !== "" && dispatchProductToCart.size !== "" ){
          await cartService.addCartIterm(inforCart,token);
       }
       dispatchProductToCart = []
@@ -409,7 +412,7 @@ const Image = (props) => {
               {/* {
                 code ? ( */}
 
-              <div className={`check-color ${props?.image?.code}color`}>
+              <div className={`check-color ${props.image[0].code}color`}>
                 { 
                     props.image.map((iterm, index) => (
                       <div key={index}>
@@ -432,7 +435,7 @@ const Image = (props) => {
                     className="color-more"
                   >
                     {" "}
-                    +{props.image.length - 4}
+                    +{props.image.length - 3}
                   </div>
                 ) : (
                   <></>

@@ -196,7 +196,7 @@ const ProductBuy = ( ) => {
       
       setImg(productDetails[slice].img.url);
       setSize(productDetails[slice].size);
-      setColor(productDetails[slice].colortitle);
+      setColor(productDetails[slice].color[0].public_id);
 
       let codeId = choose.slice(0,choose.length - 1);
       const arrColor = document.getElementsByClassName(`${codeId}`);
@@ -222,7 +222,11 @@ const ProductBuy = ( ) => {
   // list small image handle
   const scrollImage = (type, input) => {
     
-    
+    console.log("input.target.alt", input.target.alt);
+    console.log("productDetails[input.target.alt]", productDetails[input.target.alt]);
+    // if(productDetails[input.target.alt].color[0].public_id !== undefined) {
+    //   setColor(productDetails[input.target.alt].color[0].public_id)
+    // }
     let number = input.target.id;
     const slider = document.querySelectorAll('.slider-img');
     let getImage = document.querySelector('.img-view').offsetWidth;
@@ -325,7 +329,7 @@ const ProductBuy = ( ) => {
       setqCode(product[0].code);
       setPrice(product[0].price);
       setDiscount(product[0].price);
-      setColor(product[0].color.url);
+      setColor(product[0].color[0].public_id);
       useRefCode.current = product[0]?.color[0]?.url.slice(-9);
 
       
@@ -344,14 +348,14 @@ const ProductBuy = ( ) => {
       }
       let count  = 0;
       for (let i = 0; i < lengthOfListProduct; i++) {
-        let lengthNew
+        let lengthNew = 0;
         if(i > 0) {
-          lengthNew = product[i]?.img.length + count  ;
-          count = lengthNew -product[i]?.img.length;
+          lengthNew = product[i]?.img.length + count ;
         }
         else {
           lengthNew = count;
         }
+         count = lengthNew > 0 ? lengthNew - count - product[i]?.img?.length : 0;
           await colors.push({
             productId: product[i]._id,
             public_id: product[i].color[0].url.slice(-9),
@@ -380,9 +384,20 @@ const ProductBuy = ( ) => {
   }
 
   const dispatchHandle = async () => {
+    let elementColorSrc
     let elementImageSrc = document.querySelector('.border-radius')?.src;
-    let elementColorSrc = document.querySelector('.border-radius-color').src;
-    let productId = document.querySelector('.border-radius-color').classList[2];
+    if(document.querySelector('.border-radius-color')) {
+      elementColorSrc = document.querySelector('.border-radius-color').src
+    }
+    let productId = document.querySelector('.border-radius-color')?.classList[2];
+    if(!elementColorSrc) {
+      alert("Vui lòng chon màu.");;
+      return 0;
+    }
+    if(sizeApi === '') {
+      alert("Vui lòng chon size.");
+      return 0;
+    }
     let dispatchProductToCart = [
       {
       userId: userId,
@@ -402,9 +417,9 @@ const ProductBuy = ( ) => {
       addBuyProduct(...dispatchProductToCart)
       )
       let inforCart =  dispatchProductToCart[0];
-      console.log(inforCart);
+      
       if(userId !== undefined && token !== undefined) {
-        if(dispatchProductToCart.userId !== "" && dispatchProductToCart.productImage !== "" && dispatchProductToCart.productId !== "" && dispatchProductToCart.productColor !== "" && dispatchProductToCart.size !== "" ){
+        if(dispatchProductToCart.userId !== "" && dispatchProductToCart.productImage !== "" && dispatchProductToCart.productId !== "" && dispatchProductToCart.elementColorSrc && dispatchProductToCart.size){
          await cartService.addCartIterm(inforCart,token);
       }
       dispatchProductToCart = []
@@ -412,10 +427,7 @@ const ProductBuy = ( ) => {
 
   }
 
-  const handleFirst = () => {
-    
-    console.log("size", sizeApi);
-  }
+
   
   useEffect( () => {
     if(window.location.pathname.split('/')[2] !== undefined) {
@@ -514,14 +526,14 @@ const ProductBuy = ( ) => {
               ))
             }
 
-            {/* {newArrProduct[1].length > 3 ? (
+            {/* {listColor.length > 4 ? (
               <div
-                id={newArrProduct[1][0].code}
-                // onClick={(e) => handleOverFllow(e.target.id)}
+                id={qCode}
+                onClick={(e) => handleOverFllow(e.target.id)}
                 className="color-more"
               >
                 {" "}
-                +{newArrProduct[1].length - 4}
+                +{listColor.length - 4}
               </div>
             ) : (
               <></>

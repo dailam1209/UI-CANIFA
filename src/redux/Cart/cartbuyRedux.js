@@ -11,14 +11,14 @@ const amountTotal = (products) => {
     return total;
 }
 
-const amountStock = (products) => {
-    let stock = 0;
+const amountDiscount = (products) => {
+    let discount = 0;
     products.map((_, index) => {
-        stock = stock + (Number(_?.quantity) * Number(_?.inforproduct[0]?.price) * Number(_?.inforproduct[0]?.stock))/100
+        discount = discount + (Number(_?.quantity) * Number(_?.inforproduct[0]?.price) * Number(_?.inforproduct[0]?.discount))/100
         
     })
     
-    return stock;
+    return discount;
 }
 
 const updateProductLocalStorage = (state) => {
@@ -31,7 +31,7 @@ const cartBuySlice = createSlice ({
     initialState: {
         productbuy: [],
         amount: 0,
-        stock: 0,
+        discount: 0,
        
     },
     reducers: {
@@ -44,7 +44,7 @@ const cartBuySlice = createSlice ({
             }
             
             state.amount = amountTotal(state.productbuy)
-            state.stock  = amountStock(state.productbuy)
+            state.discount  = amountDiscount(state.productbuy)
             updateProductLocalStorage(state.productbuy)
             
 
@@ -56,7 +56,7 @@ const cartBuySlice = createSlice ({
                 exist.quantity = exist.quantity + 1;
             }
             state.amount = amountTotal(state.productbuy);
-            state.stock  = amountStock(state.productbuy)
+            state.discount  = amountDiscount(state.productbuy)
             updateProductLocalStorage(state.productbuy)
         },
         decProduct(state, action) {
@@ -73,7 +73,7 @@ const cartBuySlice = createSlice ({
                 }
             }
             state.amount = amountTotal(state.productbuy)
-            state.stock  = amountStock(state.productbuy)
+            state.discount  = amountDiscount(state.productbuy)
             updateProductLocalStorage(state.productbuy)
         },
         removeItem(state, action) {
@@ -86,7 +86,7 @@ const cartBuySlice = createSlice ({
             state.productbuy.splice(action.payload[0].index, 1);
             state.productbuy =  state.productbuy;
             state.amount = amountTotal(state.productbuy)
-            state.stock  = amountStock(state.productbuy)
+            state.discount  = amountDiscount(state.productbuy)
             updateProductLocalStorage(state.productbuy)
         },
         addCart(state, action) {

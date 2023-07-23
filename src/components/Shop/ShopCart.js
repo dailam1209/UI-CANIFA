@@ -65,7 +65,7 @@ function ShopCart () {
 
   const id = iterm?.payload?.user?._id;
   const amountSum =  useSelector((state) => state.cart.amount);
-  const stock =  useSelector((state) => state.cart.stock);
+  const discount =  useSelector((state) => state.cart.discount);
   let checkoutInfor = false;
   //modal
   const [open, setOpen] = useState(false);
@@ -377,7 +377,7 @@ const onApprove = (data, actions) => {
                       <tbody>
                         <tr>
                           <th>Giảm giá</th>
-                          <td className="sale">-{String(stock.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</td>
+                          <td className="sale">-{String(discount.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</td>
                         </tr>
                       </tbody>
                       <tfoot>
@@ -394,7 +394,7 @@ const onApprove = (data, actions) => {
                             Tổng tiền thanh toán   
                             <small>(Đã bao gồm thuế VAT)</small>
                           </th>
-                          <td>{String(amountSum.toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</td>
+                          <td>{String((amountSum - discount).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</td>
                         </tr>
                         
                       </tfoot>

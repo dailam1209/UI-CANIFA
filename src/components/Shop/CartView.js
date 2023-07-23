@@ -189,7 +189,7 @@ function CartView() {
                     </div>
                     <div className="col cart-infor">
                       <div className="cart-price">
-                        <p>{String(((_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price) - ((_?.inforproduct?.price !== undefined ? _?.inforproduct?.stock : _?.inforproduct[0]?.stock)/100)).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}₫</p>
+                        <p>{String(((_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price) - ((_?.inforproduct?.price !== undefined ? (_?.inforproduct?.price * _?.inforproduct?.discount / 100) : (_?.inforproduct[0]?.price * _?.inforproduct[0]?.discount)/100))).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}₫</p>
                         
                       </div>
                       <div className="cart-price none-stock">
@@ -214,7 +214,7 @@ function CartView() {
                     </div>
                     <div className="col cart-infor">
                       <div className="cart-price">
-                        <p>{String(((_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price) - ((_?.inforproduct?.price !== undefined ? _?.inforproduct?.stock : _?.inforproduct[0]?.stock)/100)).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫</p>
+                        <p>{String(((_?.inforproduct?.price !== undefined ? _?.inforproduct?.price : _?.inforproduct[0]?.price) - ((_?.inforproduct?.price !== undefined ? (_?.inforproduct?.price * _?.inforproduct?.discount / 100) : (_?.inforproduct[0]?.price * _?.inforproduct[0]?.discount)/100))).toFixed(3)).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}₫</p>
                         
                       </div>
                     </div>

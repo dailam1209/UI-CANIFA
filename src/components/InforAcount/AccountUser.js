@@ -103,7 +103,7 @@ function AccountUser() {
             alert('Please check email.')
         }
         console.log("phone", phone);
-        if(phone === "" || phone.toString().match(checkPhone) === false ) {
+        if(phone &&  phone.toString().match(checkPhone) === false ) {
             alert('Please check phone number.')
         }
         let birthDayNew = (day + "/" + month + "/" + year).toString();
